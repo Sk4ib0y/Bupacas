@@ -43,7 +43,11 @@ public class Envios extends AppCompatActivity implements AdapterView.OnItemClick
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String item=texto[position];
 
+        Intent intent= new Intent(this, DatosEnvio.class);
+        intent.putExtra("item",item);
+        startActivity(intent);
     }
 
     @Override

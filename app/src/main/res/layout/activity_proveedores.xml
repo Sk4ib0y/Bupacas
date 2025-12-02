@@ -25,6 +25,7 @@
         android:layout_marginLeft="15dp"
         android:orientation="horizontal">
         <Button
+            android:textColor="@color/black"
             android:layout_width="140dp"
             android:layout_height="70dp"/>
         <ImageView

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Bupacas"
         tools:targetApi="31">
         <activity
+            android:name=".DatosEnvio"
+            android:exported="false" />
+        <activity
             android:name=".InicioSesionRegistro"
             android:exported="false" />
         <activity
@@ -39,8 +42,6 @@
         <activity
             android:name=".NoDisponible"
             android:exported="false" />
-
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
