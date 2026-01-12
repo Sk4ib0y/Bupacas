@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    android:orientation="vertical"
+    tools:context=".Datos.DatosEnvio">
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/atras"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/flecha"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="32dp"
+            android:text="Nombre del envío"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de realización"
+        android:textSize="23dp"
+        android:fontFamily="serif"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/fondoenvio"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="170dp"
+        android:src="@drawable/camion2"/>
+
+        <LinearLayout
+            android:layout_marginTop="13dp"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/fondoenvio">
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="24dp"
+                android:text="Destinatario: ______"
+                android:id="@+id/destinatario"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="24dp"
+                android:text="Producto: ______"
+                android:id="@+id/producto"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="24dp"
+                android:text="Localizacion: ______"
+                android:id="@+id/localizacion"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="24dp"
+                android:text="Pago:$ ______"
+                android:id="@+id/pagos"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="24dp"
+                android:text="Proovedor: ______"
+                android:id="@+id/proovedor"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/iconoperfil"
+            android:layout_marginLeft="130dp"
+            android:id="@+id/perfil"
+            android:layout_marginTop="85dp"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="120dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Datos del Producto"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="29.6dp"
+            android:text="Cantidad (Kg): ___________"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:id="@+id/peso"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="29.6dp"
+            android:text="Num. Cajas: ___________"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:id="@+id/ncajas"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="29.6dp"
+            android:text="Num. Tarimas: ___________"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:id="@+id/ntarimas"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="29.6dp"
+            android:text="Precio por unidad: $________"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:id="@+id/precio"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datospago"
+        android:text="Especificaciones de\nPago\n__________\n__________\n__________\n__________"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"/>
+    <View
+        android:layout_width="360dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"/>
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/casita"
+            android:id="@+id/casita"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/folder"
+            android:id="@+id/carpeta"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/basurita2"
+            android:id="@+id/basura"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/mensajitos"
+            android:id="@+id/soporte"/>
+    </LinearLayout>
+</LinearLayout>

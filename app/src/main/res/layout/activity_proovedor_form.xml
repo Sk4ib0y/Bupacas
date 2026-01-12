@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:background="#F2F2F2"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Altas.ProovedorAltas">
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/flecha"
+            android:id="@+id/atras"/>
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_marginStart="40dp"
+            android:layout_height="100dp"
+            android:src="@drawable/papaproveedores1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="RFC"/>
+        <EditText
+            android:layout_width="200dp"
+            android:textColor="@color/black"
+            android:layout_height="40dp"
+            android:id="@+id/rfc"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Nombre"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:textColor="@color/black"
+            android:id="@+id/nombre"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Empresa"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:textColor="@color/black"
+            android:id="@+id/empresa"/>
+    </LinearLayout>    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Zona"/>
+        <EditText
+            android:layout_width="200dp"
+            android:textColor="@color/black"
+            android:layout_height="40dp"
+            android:id="@+id/zona"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir al registro"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        android:textSize="30dp"
+        android:id="@+id/send"
+        android:background="@drawable/colorb"
+        app:backgroundTint="@null"/>
+    <View
+        android:layout_width="360dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/black"/>
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/casita"
+            android:id="@+id/casita"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/folder"
+            android:id="@+id/carpeta"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/basurita2"
+            android:id="@+id/basura"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/mensajitos"
+            android:id="@+id/soporte"/>
+</LinearLayout>
+</LinearLayout>
