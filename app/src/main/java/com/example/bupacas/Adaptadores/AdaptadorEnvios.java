@@ -45,9 +45,7 @@ public class AdaptadorEnvios extends BaseAdapter
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.modeloenvios, null);
         TextView textView= convertView.findViewById(R.id.textview);
-        ImageView imageView= convertView.findViewById(R.id.imageicon);
         textView.setText(texto1[position]);
-        imageView.setImageResource(imagen[position]);
         return convertView;
     }
 }

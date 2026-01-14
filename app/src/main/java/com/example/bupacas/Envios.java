@@ -19,8 +19,8 @@ import com.example.bupacas.Misceláneo.Soporte;
 import java.security.Principal;
 
 public class Envios extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
-    ImageView atras, casita, carpeta, basura, soporte, mas;
-    String texto[] = {"tilin"};
+    ImageView atras, casita , soporte, mas;
+    String texto[] = {"Juan Pérez - Calle 123, CDMX"};
     ListView listita;
     int imagen[] = {R.drawable.papa};
 
@@ -32,14 +32,10 @@ public class Envios extends AppCompatActivity implements AdapterView.OnItemClick
 
         atras= findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        carpeta=findViewById(R.id.carpeta);
-        basura=findViewById(R.id.basura);
         mas=findViewById(R.id.mas);
         soporte=findViewById(R.id.soporte);
         casita.setOnClickListener(this);
-        carpeta.setOnClickListener(this);
         mas.setOnClickListener(this);
-        basura.setOnClickListener(this);
         soporte.setOnClickListener(this);
         listita = findViewById(R.id.listita);
         listita.setOnItemClickListener(this);
@@ -76,16 +72,6 @@ public class Envios extends AppCompatActivity implements AdapterView.OnItemClick
         else if(id==casita.getId())
         {
             Intent intent= new Intent(this, Principal.class);
-            startActivity(intent);
-        }
-        else if(basura.getId()== id)
-        {
-            Intent intent= new Intent(this, NoDisponible.class);
-            startActivity(intent);
-        }
-        else if(carpeta.getId()== id)
-        {
-            Intent intent= new Intent(this, NoDisponible.class);
             startActivity(intent);
         }
         else if(mas.getId()==id)

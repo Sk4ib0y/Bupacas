@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class EnviosAltas extends AppCompatActivity implements View.OnClickListener {
 
     EditText fecha;
-    ImageView atras, casita, folder, basurita, comentarios;
+    ImageView atras, casita, comentarios;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +34,6 @@ public class EnviosAltas extends AppCompatActivity implements View.OnClickListen
         fecha=findViewById(R.id.fecha);
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        folder=findViewById(R.id.carpeta);
-        basurita=findViewById(R.id.basura);
         comentarios=findViewById(R.id.soporte);
         Calendar calendar= Calendar.getInstance();
 
@@ -57,8 +55,6 @@ public class EnviosAltas extends AppCompatActivity implements View.OnClickListen
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        folder.setOnClickListener(this);
-        basurita.setOnClickListener(this);
         comentarios.setOnClickListener(this);
     }
 
@@ -75,16 +71,7 @@ public class EnviosAltas extends AppCompatActivity implements View.OnClickListen
             Intent intent= new Intent(this, Principal.class);
             startActivity(intent);
         }
-        else if(folder.getId()==id)
-        {
-            Intent intent= new Intent(this, NoDisponible.class);
-            startActivity(intent);
-        }
-        else if(basurita.getId()==id)
-        {
-            Intent intent= new Intent(this, NoDisponible.class);
-            startActivity(intent);
-        }
+
         else if(comentarios.getId()==id)
         {
             Intent intent= new Intent(this, Soporte.class);

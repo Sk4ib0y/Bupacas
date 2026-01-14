@@ -1,4 +1,4 @@
-package com.example.bupacas.Altas;
+package com.example.bupacas.Edit;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,38 +10,57 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bupacas.DAO.ProveedorDAO;
-import com.example.bupacas.Misceláneo.NoDisponible;
+import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
-import com.example.bupacas.Misceláneo.Soporte;
 
-public class ProovedorAltas extends AppCompatActivity implements View.OnClickListener {
+public class ProveedorEdit extends AppCompatActivity implements View.OnClickListener {
+
 
     EditText rfc, nombre, zona, empresa;
     ImageView atras, casita, soporte;
-    Button añadir;
+    Button editar;
+    String rfcOriginal, nombreOriginal, empresaOriginal, zonaOriginal;
+    int idProveedor;
     ProveedorDAO proveedorDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_proovedor_form);
+        setContentView(R.layout.activity_proveedor_edit);
 
         rfc=findViewById(R.id.rfc);
         nombre=findViewById(R.id.nombre);
         zona=findViewById(R.id.zona);
         atras=findViewById(R.id.atras);
         empresa=findViewById(R.id.empresa);
-        añadir=findViewById(R.id.send);
+        editar=findViewById(R.id.send);
         casita=findViewById(R.id.casita);
         soporte=findViewById(R.id.soporte);
 
         casita.setOnClickListener(this);
         soporte.setOnClickListener(this);
-        añadir.setOnClickListener(this);
+        editar.setOnClickListener(this);
         atras.setOnClickListener(this);
+
+        Intent intent=getIntent();
+        rfcOriginal=intent.getStringExtra("rfc");
+        nombreOriginal=intent.getStringExtra("nombre");
+        empresaOriginal=intent.getStringExtra("empresa");
+        zonaOriginal=intent.getStringExtra("zona");
+        idProveedor=intent.getIntExtra("id",-1);
+
+        rfc.setText(rfcOriginal);
+        nombre.setText(nombreOriginal);
+        empresa.setText(empresaOriginal);
+        zona.setText(zonaOriginal);
+
 
         proveedorDAO=new ProveedorDAO(this);
     }
@@ -50,7 +69,7 @@ public class ProovedorAltas extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         int id= v.getId();
 
-        if(añadir.getId() == id)
+        if(editar.getId() == id)
         {
             String rfcStr=rfc.getText().toString().trim();
             String nombreStr=nombre.getText().toString().trim();
@@ -62,22 +81,16 @@ public class ProovedorAltas extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(proveedorDAO.existe(nombreStr, rfcStr))
-            {
-                Toast.makeText(this, "El proveedor ya existe en la base de datos", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            boolean resultado=proveedorDAO.edit(idProveedor, rfcStr, nombreStr, empresaStr, zonaStr);
 
-            long resultado=proveedorDAO.insertarProveedor(rfcStr, nombreStr, empresaStr, zonaStr);
-
-            if(resultado!=-1)
+            if(resultado)
             {
-                Toast.makeText(this, "¡Proveedor añadido correctamente!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "¡Proveedor editado correctamente!", Toast.LENGTH_SHORT).show();
                 finish();
             }
             else
             {
-                Toast.makeText(this, "Error al añadir el proveedor", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error al editar el proveedor", Toast.LENGTH_SHORT).show();
             }
         }
         else if(casita.getId()==id)

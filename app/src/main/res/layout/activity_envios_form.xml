@@ -170,35 +170,20 @@
             android:background="@color/black"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="100dp"
-            android:layout_marginStart="-20dp"
             android:orientation="horizontal">
-
             <ImageView
-                android:id="@+id/casita"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="40dp"
-                android:src="@drawable/casita"/>
-
+                android:layout_marginLeft="100dp"
+                android:src="@drawable/casita"
+                android:id="@+id/casita"/>
             <ImageView
-                android:id="@+id/carpeta"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/folder"/>
-
-            <ImageView
-                android:id="@+id/basura"
-                android:layout_width="80dp"
-                android:layout_height="100dp"
-                android:src="@drawable/basurita2"/>
-
-            <ImageView
-                android:id="@+id/soporte"
-                android:layout_width="80dp"
-                android:layout_height="100dp"
-                android:src="@drawable/mensajitos"/>
+                android:src="@drawable/mensajitos"
+                android:id="@+id/soporte"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -14,7 +14,7 @@ import com.example.bupacas.R;
 
 public class NoDisponible extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, comentarios, basurita;
+    ImageView atras, casita, comentarios;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +24,10 @@ public class NoDisponible extends AppCompatActivity implements View.OnClickListe
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
         comentarios=findViewById(R.id.soporte);
-        basurita=findViewById(R.id.basura);
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
         comentarios.setOnClickListener(this);
-        basurita.setOnClickListener(this);
 
     }
 
@@ -50,10 +48,6 @@ public class NoDisponible extends AppCompatActivity implements View.OnClickListe
         {
             Intent intent= new Intent(this, Soporte.class);
             startActivity(intent);
-        }
-        else if(basurita.getId() == id)
-        {
-            Toast.makeText(this, "No Disponible Aun", Toast.LENGTH_SHORT).show();
         }
     }
 }

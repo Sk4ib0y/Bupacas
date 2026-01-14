@@ -16,6 +16,7 @@
         android:src="@drawable/flecha"/>
 
     <LinearLayout
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="gmail"
+            android:text="BupacasStore1@gmail.com"
             android:textSize="20dp"
             android:gravity="center"
             android:textColor="@color/black"/>
@@ -54,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="telefono"
+            android:text="+52 55 1322 3588"
             android:textSize="20dp"
             android:gravity="center"
             android:textColor="@color/black"/>

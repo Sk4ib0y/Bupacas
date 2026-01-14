@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,10 @@ import com.example.bupacas.R;
 
 public class DatosProv extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, folder, basura, soporte;
+    ImageView atras, casita, soporte;
+    TextView nombre, datos;
+    String nombreStr, rfc, empresa, zona;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +31,24 @@ public class DatosProv extends AppCompatActivity implements View.OnClickListener
         atras=findViewById(R.id.atras);
         atras.setOnClickListener(this);
         casita=findViewById(R.id.casita);
-        folder=findViewById(R.id.carpeta);
-        basura=findViewById(R.id.basura);
         soporte=findViewById(R.id.soporte);
 
+        nombre=findViewById(R.id.nombre);
+        datos=findViewById(R.id.datos);
+
         casita.setOnClickListener(this);
-        folder.setOnClickListener(this);
-        basura.setOnClickListener(this);
         soporte.setOnClickListener(this);
+
+        Intent intent=getIntent();
+        id=intent.getIntExtra("id",-1);
+        nombreStr=intent.getStringExtra("nombre");
+        rfc=intent.getStringExtra("rfc");
+        empresa=intent.getStringExtra("empresa");
+        zona=intent.getStringExtra("zona");
+
+        nombre.setText(nombreStr);
+
+        datos.setText(rfc+"\nEmpresa: "+empresa+"\nZona: "+zona+"\nID: "+id);
     }
 
     @Override
@@ -48,14 +62,6 @@ public class DatosProv extends AppCompatActivity implements View.OnClickListener
         else if(id==casita.getId())
         {
             startActivity(new Intent(this, Principal.class));
-        }
-        else if(id==folder.getId())
-        {
-            startActivity(new Intent(this, NoDisponible.class));
-        }
-        else if(id==basura.getId())
-        {
-            startActivity(new Intent(this, NoDisponible.class));
         }
         else if(id==soporte.getId())
         {

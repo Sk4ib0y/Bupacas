@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="345dp"
+    android:background="@drawable/colorb3"
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="100dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/icono"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"/>
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:text="e"
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:id="@+id/texto" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:textColor="#000000"
+                    android:textSize="12dp"
+                    android:gravity="center_horizontal"
+                    android:text="Monto"/>
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:textColor="#000000"
+                    android:textSize="12dp"
+                    android:id="@+id/monto"
+                    android:gravity="center_horizontal"
+                    android:text=""/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:textColor="#000000"
+                    android:textSize="12dp"
+                    android:gravity="center_horizontal"
+                    android:text="Estado"/>
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:textColor="#000000"
+                    android:textSize="12dp"
+                    android:id="@+id/estado"
+                    android:gravity="center_horizontal"
+                    android:text=""/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="6sp"
+            android:src="@drawable/editar"
+            android:id="@+id/editar"/>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="6sp"
+            android:src="@drawable/basurita3"
+            android:id="@+id/basura"/>
+    </LinearLayout>
+</LinearLayout>

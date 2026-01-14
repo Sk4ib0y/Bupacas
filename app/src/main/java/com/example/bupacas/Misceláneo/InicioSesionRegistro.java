@@ -11,20 +11,23 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bupacas.DAO.UsuarioDAO;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
 public class InicioSesionRegistro extends AppCompatActivity implements View.OnClickListener {
 
     FrameLayout logindatos, registrodatos;
-    LinearLayout contraseñadatos, codigodatos;
+    LinearLayout contraseñadatos;
     Button registrob, loginsend, loginb, registrosend;
-    EditText gmaillogin, contraseñalogin,usuario, gmailregistro, contraseñaregistro, confircontraseña;
-    TextView olvidastecontraseñalogin;
+    EditText usuariologin, contraseñalogin,usuario, gmailregistro, contraseñaregistro, confircontraseña;
+    UsuarioDAO usuarioDAO;
+    SesionManager sesionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +41,29 @@ public class InicioSesionRegistro extends AppCompatActivity implements View.OnCl
         loginb=findViewById(R.id.iniciosesionb);
         loginsend=findViewById(R.id.iniciosesionsend);
         registrosend=findViewById(R.id.registrosend);
-        gmaillogin=findViewById(R.id.gmail_login);
+        usuariologin=findViewById(R.id.usuario_login);
         contraseñalogin=findViewById(R.id.contraseña_login);
         usuario=findViewById(R.id.usuario);
         gmailregistro=findViewById(R.id.gmail_registro);
         contraseñaregistro=findViewById(R.id.contraseña_registro);
         confircontraseña=findViewById(R.id.confirmarcontraseña_registro);
+
+        sesionManager=new SesionManager(this);
+
+        if(sesionManager.isAdmin())
+        {
+            startActivity(new Intent(this, Principal.class));
+            finish();
+        }
+
         String tipo=getIntent().getStringExtra("tipo");
-        olvidastecontraseñalogin=findViewById(R.id.olvidastecontralogin);
-        codigodatos=findViewById(R.id.codigodatos);
         contraseñadatos=findViewById(R.id.contraseñadatos);
 
         registrob.setOnClickListener(this);
         loginsend.setOnClickListener(this);
         registrosend.setOnClickListener(this);
         loginb.setOnClickListener(this);
-        olvidastecontraseñalogin.setOnClickListener(this);
+        usuarioDAO=new UsuarioDAO(this);
 
         if(tipo!=null)
         {
@@ -71,7 +81,6 @@ public class InicioSesionRegistro extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         int id=v.getId();
-        String cadenita=olvidastecontraseñalogin.getText().toString();
         if(registrob.getId() == id)
         {
             logindatos.setVisibility(INVISIBLE);
@@ -82,27 +91,59 @@ public class InicioSesionRegistro extends AppCompatActivity implements View.OnCl
             logindatos.setVisibility(VISIBLE);
             registrodatos.setVisibility(INVISIBLE);
         }
-        else if(loginsend.getId()== id)
-        {
-            Intent intent= new Intent(this, Principal.class);
-            startActivity(intent);
-        }
         else if (registrosend.getId()==id)
         {
-                Intent intent= new Intent(this, Principal.class);
-                startActivity(intent);
+            String nom=usuario.getText().toString().trim();
+            String emailStr=gmailregistro.getText().toString().trim();
+            String contraseñaStr=contraseñaregistro.getText().toString().trim();
+            String confContraseña=confircontraseña.getText().toString().trim();
+            
+            if(nom.isEmpty() || emailStr.isEmpty() || contraseñaStr.isEmpty() || confContraseña.isEmpty() )
+            {
+                Toast.makeText(this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(!confContraseña.equals(contraseñaStr))
+            {
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            long resultado=usuarioDAO.insertarUsuario(nom, emailStr, contraseñaStr);
+
+            if(resultado!=-1)
+            {
+                Toast.makeText(this, "¡Usuario registrado correctamente!", Toast.LENGTH_SHORT).show();
+                sesionManager.login(nom);
+                startActivity(new Intent(this, Principal.class));
+
+            }
+            else
+            {
+                Toast.makeText(this, "Usuario existente", Toast.LENGTH_SHORT).show();
+            }
         }
-        else if (cadenita.equals("¿Olvidaste la contraseña?"))
+
+        else if(loginsend.getId()== id)
         {
-            codigodatos.setVisibility(VISIBLE);
-            contraseñadatos.setVisibility(INVISIBLE);
-            olvidastecontraseñalogin.setText("Cliquea si recordaste la contraseña");
-        }
-        else if(cadenita.equals("Cliquea si recordaste la contraseña"))
-        {
-            codigodatos.setVisibility(INVISIBLE);
-            contraseñadatos.setVisibility(VISIBLE);
-            olvidastecontraseñalogin.setText("¿Olvidaste la contraseña?");
+            String user=usuariologin.getText().toString().trim();
+            String pass=contraseñalogin.getText().toString().trim();
+
+            if(user.isEmpty() || pass.isEmpty())
+            {
+                Toast.makeText(this, "Los campos deben rellenarse", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(usuarioDAO.login(user, pass))
+            {
+                sesionManager.login(user);
+                startActivity(new Intent(this, Principal.class));
+                Toast.makeText(this, "LogIn exitoso", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(this, "Usuario o Contraseña incorrectos", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

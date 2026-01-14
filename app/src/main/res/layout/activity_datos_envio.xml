@@ -26,6 +26,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="32dp"
+            android:textColor="@color/black"
             android:text="Nombre del envío"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
@@ -36,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha de realización"
+        android:textColor="@color/black"
         android:textSize="23dp"
         android:fontFamily="serif"
         android:layout_marginTop="10dp"
@@ -62,42 +64,40 @@
 
             <TextView
                 android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:text="Destinatario: ______"
+                android:layout_height="30dp"
+                android:text="Destinatario: Juan Perez"
+                android:textColor="@color/black"
                 android:id="@+id/destinatario"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="24dp"
-                android:text="Producto: ______"
+                android:text="Producto: Papa"
+                android:textColor="@color/black"
                 android:id="@+id/producto"
                 android:textStyle="bold"/>
             <TextView
-                android:layout_width="130dp"
+                android:layout_width="160dp"
                 android:layout_height="24dp"
-                android:text="Localizacion: ______"
+                android:text="Localizacion: Calle 123"
+                android:textColor="@color/black"
                 android:id="@+id/localizacion"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="24dp"
-                android:text="Pago:$ ______"
+                android:text="Pago:$250"
+                android:textColor="@color/black"
                 android:id="@+id/pagos"
                 android:textStyle="bold"/>
             <TextView
-                android:layout_width="130dp"
+                android:layout_width="160dp"
+                android:textColor="@color/black"
                 android:layout_height="24dp"
-                android:text="Proovedor: ______"
+                android:text="Proovedor: PapaFarm"
                 android:id="@+id/proovedor"
                 android:textStyle="bold"/>
         </LinearLayout>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/iconoperfil"
-            android:layout_marginLeft="130dp"
-            android:id="@+id/perfil"
-            android:layout_marginTop="85dp"/>
     </FrameLayout>
 
     <LinearLayout
@@ -110,74 +110,55 @@
             android:layout_height="wrap_content"
             android:text="Datos del Producto"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="22dp"
             android:layout_gravity="center"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="29.6dp"
-            android:text="Cantidad (Kg): ___________"
+            android:textColor="@color/black"
+            android:text="Cantidad (Kg): 10kg"
             android:textStyle="bold"
             android:textSize="18dp"
             android:id="@+id/peso"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="29.6dp"
-            android:text="Num. Cajas: ___________"
+            android:text="Num. Cajas: 3"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="18dp"
             android:id="@+id/ncajas"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="29.6dp"
-            android:text="Num. Tarimas: ___________"
+            android:text="Num. Tarimas: 1"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="18dp"
             android:id="@+id/ntarimas"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="29.6dp"
-            android:text="Precio por unidad: $________"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:id="@+id/precio"/>
+
+
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/datospago"
-        android:text="Especificaciones de\nPago\n__________\n__________\n__________\n__________"
-        android:textSize="18dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"/>
+
     <View
         android:layout_width="360dp"
         android:layout_gravity="center"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
         android:background="@color/black"/>
     <LinearLayout
         android:layout_width="400dp"
         android:layout_height="100dp"
-        android:layout_gravity="center"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="100dp"
             android:src="@drawable/casita"
             android:id="@+id/casita"/>
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:src="@drawable/folder"
-            android:id="@+id/carpeta"/>
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:src="@drawable/basurita2"
-            android:id="@+id/basura"/>
-        <ImageView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/mensajitos"
             android:id="@+id/soporte"/>

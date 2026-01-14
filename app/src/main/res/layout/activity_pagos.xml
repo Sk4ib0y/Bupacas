@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
-    tools:context=".Proveedores">
+    tools:context=".Pagos">
 
     <ImageView
         android:layout_width="170dp"
         android:layout_height="100dp"
-        android:src="@drawable/papaproveedores1"
+        android:src="@drawable/papapagos1"
         android:layout_gravity="top|center_horizontal"/>
 
     <ImageView
@@ -64,6 +64,7 @@
         android:layout_marginTop="600dp"
         android:layout_marginStart="190dp"
         android:src="@drawable/mensajitos"/>
+
     <FrameLayout
         android:id="@+id/deleteLayout"
         android:layout_width="match_parent"

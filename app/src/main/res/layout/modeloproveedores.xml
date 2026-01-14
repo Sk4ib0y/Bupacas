@@ -13,16 +13,33 @@
         android:layout_height="80dp"/>
     <TextView
         android:textColor="@color/black"
-        android:layout_width="210dp"
+        android:layout_width="75dp"
         android:layout_marginTop="15dp"
         android:layout_height="60dp"
-        android:background="#CCA9DD"
+        android:textSize="20dp"
+        android:text="RFC:"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:textColor="@color/black"
+        android:layout_width="75dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="60dp"
+        android:textSize="20dp"
+        android:gravity="center_horizontal"
         android:id="@+id/textview"/>
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:id="@+id/delete"
         android:layout_marginTop="25dp"
         android:src="@drawable/basurita3"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="43dp"
+        android:id="@+id/edit"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/editar"/>
 
 
 </LinearLayout>

@@ -32,7 +32,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginLeft="20dp"
         android:orientation="horizontal">
-        
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,30 +87,30 @@
             android:textColor="@color/black"
             android:id="@+id/empresa"/>
     </LinearLayout>    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="60dp"
+    android:layout_marginLeft="20dp"
+    android:orientation="horizontal">
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="Zona"/>
-        <EditText
-            android:layout_width="200dp"
-            android:textColor="@color/black"
-            android:layout_height="40dp"
-            android:id="@+id/zona"/>
-    </LinearLayout>
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Zona"/>
+    <EditText
+        android:layout_width="200dp"
+        android:textColor="@color/black"
+        android:layout_height="40dp"
+        android:id="@+id/zona"/>
+</LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Añadir al registro"
+        android:text="Editar el registro"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:layout_marginTop="40dp"

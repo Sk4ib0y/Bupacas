@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Bupacas"
         tools:targetApi="31">
         <activity
+            android:name=".Pagos"
+            android:exported="false" />
+        <activity
             android:name=".Soporte.Privacidad"
             android:exported="false" />
         <activity
@@ -53,6 +56,9 @@
             android:exported="false" />
         <activity
             android:name=".Altas.NuevoUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".Edit.ProveedorEdit"
             android:exported="false" />
         <activity
             android:name=".Principal"

@@ -5,20 +5,18 @@
     android:layout_marginTop="20dp"
     android:layout_height="match_parent">
         <TextView
-            android:layout_width="130dp"
-            android:layout_height="50dp"
+            android:layout_width="220dp"
+            android:layout_height="70dp"
             android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:textSize="15dp"
             android:id="@+id/textview"
             android:background="@drawable/bordestextv"/>
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/imageicon"
-            android:layout_marginTop="-20dp"
-            android:src="@drawable/iconoperfil"/>
+
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginStart="10dp"
         android:src="@drawable/camion3"/>
     <ImageView
         android:layout_width="60dp"

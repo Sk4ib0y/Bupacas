@@ -13,7 +13,7 @@ import com.example.bupacas.Misceláneo.Soporte;
 
 public class Inventarios extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, comentarios, basurita, folder;
+    ImageView atras, casita, comentarios;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +23,7 @@ public class Inventarios extends AppCompatActivity implements View.OnClickListen
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
         comentarios=findViewById(R.id.soporte);
-        basurita=findViewById(R.id.basura);
-        folder=findViewById(R.id.carpeta);
 
-        basurita.setOnClickListener(this);
-        folder.setOnClickListener(this);
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
         comentarios.setOnClickListener(this);
@@ -51,15 +47,6 @@ public class Inventarios extends AppCompatActivity implements View.OnClickListen
             Intent intent= new Intent(this, Soporte.class);
             startActivity(intent);
         }
-        else if(basurita.getId()==id)
-        {
-            Intent intent= new Intent(this, NoDisponible.class);
-            startActivity(intent);
-        }
-        else if(folder.getId()==id)
-        {
-            Intent intent= new Intent(this, NoDisponible.class);
-            startActivity(intent);
-        }
+
     }
 }

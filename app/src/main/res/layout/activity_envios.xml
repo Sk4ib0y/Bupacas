@@ -24,22 +24,12 @@
         android:layout_height="70dp"
         android:layout_marginLeft="15dp"
         android:orientation="horizontal">
-        <Button
-            android:layout_width="140dp"
-            android:background="@drawable/colorb2"
-            app:backgroundTint="@null"
-            android:layout_height="50dp"/>
-        <Button
-            android:layout_width="140dp"
-            android:background="@drawable/colorb2"
-            app:backgroundTint="@null"
-            android:layout_height="50dp"/>
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/mas"
             android:src="@drawable/mas"
-            android:layout_marginLeft="0dp"/>
+            android:layout_marginLeft="280dp"/>
     </LinearLayout>
     <View
         android:layout_width="360dp"
@@ -60,27 +50,15 @@
     <LinearLayout
         android:layout_width="400dp"
         android:layout_height="100dp"
-        android:layout_marginTop="0dp"
-        android:layout_gravity="center"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="100dp"
             android:src="@drawable/casita"
             android:id="@+id/casita"/>
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:src="@drawable/folder"
-            android:id="@+id/carpeta"/>
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:src="@drawable/basurita2"
-            android:id="@+id/basura"/>
-        <ImageView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/mensajitos"
             android:id="@+id/soporte"/>
