@@ -1,73 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f2f2f2"
+    android:background="#ECEFF1"
     tools:context=".Datos.DatosProv">
+
+    <!-- HEADER -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@drawable/loginfondo"
-        android:layout_height="160dp"
-        android:orientation="horizontal">
+        android:layout_height="170dp"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/fondopequeno">
+
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_gravity="center_vertical"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:src="@drawable/iconoperfil"/>
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:textColor="@color/black"
             android:id="@+id/nombre"
-            android:text="Nombre del Proovedor"
-            android:textStyle="bold"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Proveedor"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
+
+    <!-- LINEA DE COLOR -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/black"
-        />
+        android:layout_height="6dp"
+        android:background="#546E7A"/>
+
+    <!-- BOTÓN ATRÁS -->
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/flecha"
-        android:id="@+id/atras"/>
-    <TextView
+        android:id="@+id/atras"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_margin="16dp"
+        android:background="#FFFFFF"
+        android:padding="6dp"
+        android:elevation="4dp"
+        android:src="@drawable/flecha"/>
+
+    <!-- CARD DATOS -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:textSize="25dp"
-        android:id="@+id/datos"
-        android:textColor="@color/black"
-        android:text="Aqui iran datos del Proveedor"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:elevation="8dp"
+        android:padding="20dp">
+
+        <!-- TITULO -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Información del proveedor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#37474F"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- DATOS -->
+        <TextView
+            android:id="@+id/datos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aquí irán los datos del proveedor"
+            android:textSize="17sp"
+            android:textColor="#455A64"
+            android:lineSpacingExtra="8dp"/>
+    </LinearLayout>
+
+    <!-- ESPACIO -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="230dp"
-        android:background="@color/black"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- FOOTER -->
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#CFD8DC"
+        android:elevation="6dp">
+
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="75dp"
-            android:src="@drawable/casita"
-            android:id="@+id/casita"/>
+            android:id="@+id/casita"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="32dp"
+            android:src="@drawable/casita"/>
+
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/mensajitos"
-            android:id="@+id/soporte"/>
+            android:id="@+id/soporte"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="32dp"
+            android:src="@drawable/mensajitos"/>
     </LinearLayout>
+
 </LinearLayout>
+

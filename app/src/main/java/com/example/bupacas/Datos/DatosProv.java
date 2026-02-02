@@ -48,7 +48,7 @@ public class DatosProv extends AppCompatActivity implements View.OnClickListener
 
         nombre.setText(nombreStr);
 
-        datos.setText(rfc+"\nEmpresa: "+empresa+"\nZona: "+zona+"\nID: "+id);
+        datos.setText("RFC: "+rfc+"\nEmpresa: "+empresa+"\nZona: "+zona+"\nID: "+id);
     }
 
     @Override

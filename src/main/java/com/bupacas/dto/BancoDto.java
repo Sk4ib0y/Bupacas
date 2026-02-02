@@ -1,0 +1,17 @@
+package com.bupacas.dto;
+
+import lombok.Builder;
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
+@Builder
+public class BancoDto {
+    private Integer id;
+    private BigDecimal cantidad;
+    private String tipo;
+    private String estado;
+    private Integer idProv;
+
+}

@@ -3,42 +3,49 @@ package com.example.bupacas.Misceláneo;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class SesionManager
-{
+public class SesionManager {
+    private static final String PREF_NAME = "SesionPrefs";
+    private static final String KEY_ID = "usuario_id";
+    private static final String KEY_NOMBRE = "usuario_nombre";
+    private static final String KEY_IS_LOGGED_IN = "is_logged_in";
+    private static final String KEY_IS_ADMIN = "is_admin";
 
-    private static final String NAME="sesion";
-    private static final String LOGIN="login";
-    private static  final String USER="usuario";
-
-
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
+    private Context context;
 
     public SesionManager(Context context) {
-        preferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
-        editor=preferences.edit();
+        this.context = context;
+        prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        editor = prefs.edit();
     }
 
-    public void login(String usuario)
-    {
-        editor.putBoolean(LOGIN, true);
-        editor.putString(USER, usuario);
+    public void guardarSesion(Integer id, String nombre, boolean isAdmin) {
+        editor.putInt(KEY_ID, id);
+        editor.putString(KEY_NOMBRE, nombre);
+        editor.putBoolean(KEY_IS_LOGGED_IN, true);
+        editor.putBoolean(KEY_IS_ADMIN, isAdmin);
         editor.apply();
     }
 
-    public void logout()
-    {
+    public boolean isLoggedIn() {
+        return prefs.getBoolean(KEY_IS_LOGGED_IN, false);
+    }
+
+    public boolean isAdmin() {
+        return prefs.getBoolean(KEY_IS_ADMIN, false);
+    }
+
+    public Integer getUsuarioId() {
+        return prefs.getInt(KEY_ID, -1);
+    }
+
+    public String getUsuarioNombre() {
+        return prefs.getString(KEY_NOMBRE, "");
+    }
+
+    public void logout() {
         editor.clear();
         editor.apply();
-    }
-
-    public boolean isAdmin()
-    {
-        return preferences.getBoolean(LOGIN, false);
-    }
-
-    public String getUser()
-    {
-        return preferences.getString(USER, "Usuario");
     }
 }

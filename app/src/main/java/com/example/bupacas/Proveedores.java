@@ -1,7 +1,9 @@
 package com.example.bupacas;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,175 +14,153 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bupacas.Adaptadores.AdaptadorProveedores;
 import com.example.bupacas.Altas.ProovedorAltas;
-import com.example.bupacas.DAO.ProveedorDAO;
-import com.example.bupacas.Datos.DatosProv;
 import com.example.bupacas.Edit.ProveedorEdit;
-import com.example.bupacas.Misceláneo.Actions;
-import com.example.bupacas.Misceláneo.NoDisponible;
+import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
+import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
+import com.example.bupacas.Endpoints.Service.ProveedorService;
 import com.example.bupacas.Misceláneo.Soporte;
 
-import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Proveedores extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, Actions {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    String rfc[], nombre[], empresa[], zona[];
-    ListView listita;
-    ImageView atras, casita, soporte, mas;
-    Actions actions;
-    int ids[], proveedorSeleccionado=-1;
-    ProveedorDAO proveedorDAO;
-    AdaptadorProveedores adaptadorProveedores;
-    Button cancelar, eliminar;
-    FrameLayout deleteLayout;
+public class Proveedores extends AppCompatActivity implements View.OnClickListener {
+
+    private RecyclerView recyclerProveedores;
+    private AdaptadorProveedores adaptadorProveedores;
+    private ArrayList<ProveedorDTO> listaProveedores = new ArrayList<>();
+
+    private ImageView atras, casita, soporte, mas;
+
+    private ProveedorService proveedorService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_proveedores);
 
-        atras=findViewById(R.id.atras);
-        casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
-        mas=findViewById(R.id.mas);
+        recyclerProveedores = findViewById(R.id.listita); // o R.id.recyclerProveedores si cambiaste ID
+        atras = findViewById(R.id.atras);
+        casita = findViewById(R.id.casita);
+        soporte = findViewById(R.id.soporte);
+        mas = findViewById(R.id.mas);
 
-        deleteLayout=findViewById(R.id.deleteLayout);
-        cancelar=findViewById(R.id.cancelar);
-        eliminar=findViewById(R.id.eliminar);
+        recyclerProveedores.setLayoutManager(new LinearLayoutManager(this));
+        adaptadorProveedores = new AdaptadorProveedores(this, listaProveedores);
+        recyclerProveedores.setAdapter(adaptadorProveedores);
 
-        proveedorDAO=new ProveedorDAO(this);
-        actions=this;
-        mas.setOnClickListener(this);
+        // Listeners
+        atras.setOnClickListener(this);
         casita.setOnClickListener(this);
         soporte.setOnClickListener(this);
-        cancelar.setOnClickListener(this);
-        eliminar.setOnClickListener(this);
-        listita=findViewById(R.id.listita);
-        listita.setOnItemClickListener(this);
-        atras.setOnClickListener(v -> finish());
+        mas.setOnClickListener(this);
 
-        rfc=new String[0];
-        nombre=new String[0];
-        empresa=new String[0];
-        zona=new String[0];
-        adaptadorProveedores=new AdaptadorProveedores(getApplicationContext(), rfc, actions);
-        listita.setAdapter(adaptadorProveedores);
-        refreshProveedores();
+        proveedorService = RetrofitClient.getProveedorService();
+
+        cargarProveedores();
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent=new Intent(this, DatosProv.class);
-        intent.putExtra("id", ids[position]);
-        intent.putExtra("rfc", rfc[position]);
-        intent.putExtra("nombre", nombre[position]);
-        intent.putExtra("empresa", empresa[position]);
-        intent.putExtra("zona", zona[position]);
-        startActivity(intent);
-    }
+    private void cargarProveedores() {
+        Call<List<ProveedorDTO>> call = proveedorService.getAllProveedores();
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
+        call.enqueue(new Callback<List<ProveedorDTO>>() {
+            @Override
+            public void onResponse(Call<List<ProveedorDTO>> call, Response<List<ProveedorDTO>> response) {
+                Log.d("PROVEEDORES", "onResponse llamado - Código: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("PROVEEDORES", "Datos recibidos: " + response.body().size() + " proveedores");
+                    listaProveedores.clear();
+                    listaProveedores.addAll(response.body());
+                    adaptadorProveedores.actualizarLista(listaProveedores);
+                    recyclerProveedores.requestLayout();
+                } else {
+                    Log.e("PROVEEDORES", "Respuesta no exitosa - Código: " + response.code());
+                    Toast.makeText(Proveedores.this, "Error al cargar proveedores", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ProveedorDTO>> call, Throwable t) {
+                Log.e("PROVEEDORES", "Fallo en Retrofit: " + t.getMessage(), t);
+                Toast.makeText(Proveedores.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
-        int id= v.getId();
-
-        if(id==soporte.getId())
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
-        else if(id==casita.getId())
-        {
-            Intent intent= new Intent(this, Principal.class);
-            startActivity(intent);
-        }
-        else if(mas.getId() == id)
-        {
-            Intent intent= new Intent(this, ProovedorAltas.class);
-            startActivity(intent);
-        }
-        else if(cancelar.getId()==id)
-        {
-            toggleDeleteLayout();
-        }
-        else if(eliminar.getId()==id)
-        {
-            int idReal=ids[proveedorSeleccionado];
-            boolean borrado=proveedorDAO.delete(idReal);
-            if(borrado)
-            {
-                Toast.makeText(this, "Proveedor borrado correctamente", Toast.LENGTH_SHORT).show();
-                toggleDeleteLayout();
-                refreshProveedores();
-            }
-            else
-            {
-                Toast.makeText(this, "Error al eliminar al proveedor", Toast.LENGTH_SHORT).show();
-            }
+        int id = v.getId();
+        if (id == atras.getId()) {
+            finish();
+        } else if (id == casita.getId()) {
+            startActivity(new Intent(this, Principal.class));
+            finish();
+        } else if (id == soporte.getId()) {
+            startActivity(new Intent(this, Soporte.class));
+        } else if (id == mas.getId()) {
+            startActivity(new Intent(this, ProovedorAltas.class));
         }
     }
 
-    @Override
-    public void onEdit(int position) {
-        Intent intent=new Intent(this, ProveedorEdit.class);
-        intent.putExtra("id", ids[position]);
-        intent.putExtra("rfc", rfc[position]);
-        intent.putExtra("nombre", nombre[position]);
-        intent.putExtra("empresa", empresa[position]);
-        intent.putExtra("zona", zona[position]);
+    public void onProveedorDeleteClick(int proveedorId) {
+        new AlertDialog.Builder(this)
+                .setTitle("Eliminar Proveedor")
+                .setMessage("¿Estás seguro de que deseas eliminar este proveedor?")
+                .setPositiveButton("Sí, eliminar", (dialog, which) -> eliminarProveedor(proveedorId))
+                .setNegativeButton("Cancelar", null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    private void eliminarProveedor(int idProveedor) {
+        Call<Void> call = proveedorService.deleteProveedor(idProveedor);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Proveedores.this, "Proveedor eliminado correctamente", Toast.LENGTH_SHORT).show();
+                    cargarProveedores(); // recarga la lista → desaparece el item
+                } else {
+                    String errorMsg = "Error " + response.code();
+                    try {
+                        if (response.errorBody() != null) {
+                            errorMsg += " - " + response.errorBody().string();
+                        }
+                    } catch (Exception ignored) {}
+                    Toast.makeText(Proveedores.this, errorMsg, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(Proveedores.this, "Fallo de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void send(ProveedorDTO proveedor, Intent intentito) {
+        Intent intent = new Intent(intentito);
+        intent.putExtra("id", proveedor.getIdProveedor());
+        intent.putExtra("rfc", proveedor.getRFC_prov());
+        intent.putExtra("nombre", proveedor.getNombre_prov());
+        intent.putExtra("empresa", proveedor.getEmpresa_prov());
+        intent.putExtra("zona", proveedor.getZona_prov());
         startActivity(intent);
-    }
-
-    @Override
-    public void onDelete(int position) {
-        proveedorSeleccionado=position;
-        toggleDeleteLayout();
-    }
-
-    private void refreshProveedores()
-    {
-        ArrayList<String> list=proveedorDAO.verProveedores();
-        rfc=new String[list.size()];
-        ids=new int[list.size()];
-        nombre=new String[list.size()];
-        empresa=new String[list.size()];
-        zona =new String[list.size()];
-
-        for (int i=0;i<list.size();i++)
-        {
-            String[] partes=list.get(i).split(";");
-            ids[i]=Integer.parseInt(partes[0]);
-            rfc[i]=partes[1];
-            nombre[i]=partes[2];
-            empresa[i]=partes[3];
-            zona[i]=partes[4];
-        }
-        adaptadorProveedores.UpdateProveedor(rfc);
-        adaptadorProveedores.notifyDataSetChanged();
-
-    }
-
-    private void toggleDeleteLayout()
-    {
-        if(deleteLayout.getVisibility()==View.VISIBLE)
-        {
-            deleteLayout.setVisibility(View.GONE);
-        }
-        else {
-            deleteLayout.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        refreshProveedores();
+        cargarProveedores();
     }
 }

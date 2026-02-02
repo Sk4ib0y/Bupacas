@@ -1,7 +1,9 @@
 package com.example.bupacas.Edit;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +16,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.bupacas.DAO.ProveedorDAO;
+import com.example.bupacas.Altas.ProovedorAltas;
+import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
+import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProveedorEdit extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,7 +35,6 @@ public class ProveedorEdit extends AppCompatActivity implements View.OnClickList
     Button editar;
     String rfcOriginal, nombreOriginal, empresaOriginal, zonaOriginal;
     int idProveedor;
-    ProveedorDAO proveedorDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +67,6 @@ public class ProveedorEdit extends AppCompatActivity implements View.OnClickList
         nombre.setText(nombreOriginal);
         empresa.setText(empresaOriginal);
         zona.setText(zonaOriginal);
-
-
-        proveedorDAO=new ProveedorDAO(this);
     }
 
     @Override
@@ -71,28 +75,8 @@ public class ProveedorEdit extends AppCompatActivity implements View.OnClickList
 
         if(editar.getId() == id)
         {
-            String rfcStr=rfc.getText().toString().trim();
-            String nombreStr=nombre.getText().toString().trim();
-            String empresaStr=empresa.getText().toString().trim();
-            String zonaStr=zona.getText().toString().trim();
-
-            if(rfcStr.isEmpty() || nombreStr.isEmpty() || empresaStr.isEmpty() || zonaStr.isEmpty())
-            {
-                Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
-                return;
+            editarProveedor();
             }
-            boolean resultado=proveedorDAO.edit(idProveedor, rfcStr, nombreStr, empresaStr, zonaStr);
-
-            if(resultado)
-            {
-                Toast.makeText(this, "¡Proveedor editado correctamente!", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-            else
-            {
-                Toast.makeText(this, "Error al editar el proveedor", Toast.LENGTH_SHORT).show();
-            }
-        }
         else if(casita.getId()==id)
         {
             Intent intent= new Intent(this, Principal.class);
@@ -107,5 +91,55 @@ public class ProveedorEdit extends AppCompatActivity implements View.OnClickList
         {
             finish();
         }
+    }
+
+    private void editarProveedor()
+    {
+        String nombreStr=nombre.getText().toString().trim();
+        String RFCStr=rfc.getText().toString().trim();
+        String empresaStr=empresa.getText().toString().trim();
+        String zonaStr=zona.getText().toString().trim();
+        if(TextUtils.isEmpty(nombreStr) || TextUtils.isEmpty(RFCStr) || TextUtils.isEmpty(empresaStr) || TextUtils.isEmpty(zonaStr))
+        {
+            Toast.makeText(this, "Todos los campos deben rellenarse", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ProveedorDTO proveedorDTO=new ProveedorDTO();
+        proveedorDTO.setEmpresa_prov(empresaStr);
+        proveedorDTO.setNombre_prov(nombreStr);
+        proveedorDTO.setRFC_prov(RFCStr);
+        proveedorDTO.setZona_prov(zonaStr);
+
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Editando usuario...");
+        progress.setCancelable(false);
+        progress.show();
+
+        Call<ProveedorDTO> call = RetrofitClient.getProveedorService().updateProveedor(idProveedor, proveedorDTO);
+
+            call.enqueue(new Callback<ProveedorDTO>() {
+                @Override
+                public void onResponse(Call<ProveedorDTO> call, Response<ProveedorDTO> response) {
+                    progress.dismiss();
+                    if (response.isSuccessful() && response.body() != null) {
+                        Toast.makeText(ProveedorEdit.this, "Proveedor editado correctamente", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        String error = "Error al editar: " + response.code();
+                        try {
+                            if (response.errorBody() != null) {
+                                error += " - " + response.errorBody().string();
+                            }
+                        } catch (Exception ignored) {}
+                        Toast.makeText(ProveedorEdit.this, error, Toast.LENGTH_LONG).show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<ProveedorDTO> call, Throwable t) {
+                    progress.dismiss();
+                    Toast.makeText(ProveedorEdit.this, "Fallo de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
     }
 }

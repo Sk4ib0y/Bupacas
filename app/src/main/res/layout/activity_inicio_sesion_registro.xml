@@ -6,24 +6,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/loginfondo"
+    android:focusable="false"
+    android:clickable="false"
     tools:context=".Misceláneo.InicioSesionRegistro">
 
     <FrameLayout
         android:layout_width="290dp"
         android:visibility="visible"
-        android:layout_height="340dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="540dp"
         android:layout_gravity="center"
         android:orientation="horizontal"
         android:id="@+id/logindatos"
         android:background="@drawable/bordesredondos">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido a Bupacas"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="25sp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listita"
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:scrollbars="vertical" />
 
         <Button
             android:id="@+id/registrob"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_marginLeft="125dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="350dp"
             android:text="Registrarte"
             android:textColor="@color/white"
             android:textSize="13sp"
@@ -35,7 +54,7 @@
             android:layout_height="50dp"
             android:textColor="@color/white"
             android:layout_marginLeft="35dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="350dp"
             android:text="Iniciar\nSesión"
             android:textSize="13sp"
             android:clickable="false"
@@ -44,41 +63,10 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="250dp"
+            android:layout_height="160dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="220dp"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bienvenido a Bupacas"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="25sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Usuario"
-                    android:textColor="#b2b2b2"
-                    android:textSize="19sp" />
-
-                <EditText
-                    android:id="@+id/usuario_login"
-                    android:layout_width="130dp"
-                    android:textColor="@color/black"
-                    android:layout_height="50dp"
-                    android:inputType="text" />
-            </LinearLayout>
-
-
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -123,13 +111,10 @@
     </FrameLayout>
 
 
-
-
-
-
+    
     <FrameLayout
         android:layout_width="290dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/registrodatos"
         android:layout_height="420dp"
         android:layout_marginTop="60dp"

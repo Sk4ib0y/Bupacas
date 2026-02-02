@@ -104,7 +104,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         }
         else if(cliente.getId()==id)
         {
-            Intent intent=new Intent(this, NoDisponible.class);
+            Intent intent=new Intent(this, Cliente.class);
             startActivity(intent);
         }
 

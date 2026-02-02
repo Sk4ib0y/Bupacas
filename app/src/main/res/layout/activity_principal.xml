@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoprincipal"
+    android:background="@drawable/fondogrande"
     tools:context=".Principal">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:background="#80FFFFFF"
         android:orientation="horizontal">
 
         <ImageView
@@ -30,6 +31,7 @@
     <ScrollView
         android:layout_width="360dp"
         android:layout_height="420dp"
+        android:background="#80FFFFFF"
         android:layout_marginTop="160dp"
         android:layout_gravity="top|center_horizontal"
         android:fillViewport="true">
@@ -184,34 +186,33 @@
         </LinearLayout>
     </ScrollView>
 
-
-    <View
-        android:layout_width="360dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="600dp"
-        android:layout_gravity="top|center_horizontal"
-        android:background="@color/black" />
-
+    <!-- FOOTER -->
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
         android:orientation="horizontal"
-        android:layout_marginTop="610dp"
-        android:layout_gravity="top|center_horizontal">
+        android:gravity="center"
+        android:layout_marginTop="620dp"
+        android:background="#CFD8DC"
+        android:elevation="8dp">
 
         <ImageView
             android:id="@+id/casita"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"
-            android:src="@drawable/casita" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="32dp"
+            android:src="@drawable/casita"
+            android:contentDescription="Inicio"/>
 
         <ImageView
             android:id="@+id/soporte"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/mensajitos" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="32dp"
+            android:src="@drawable/mensajitos"
+            android:contentDescription="Soporte"/>
     </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/signoutlayout"
