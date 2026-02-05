@@ -11,7 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#80FFFFFF"
         android:orientation="horizontal">
 
         <ImageView
@@ -31,7 +30,6 @@
     <ScrollView
         android:layout_width="360dp"
         android:layout_height="420dp"
-        android:background="#80FFFFFF"
         android:layout_marginTop="160dp"
         android:layout_gravity="top|center_horizontal"
         android:fillViewport="true">
@@ -45,144 +43,67 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
 
-                <LinearLayout
-                    android:id="@+id/proovedores"
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="80dp"
-                        android:text="Proveedores"
-                        android:textColor="@color/black"
-                        android:textSize="27sp"
-                        android:textStyle="bold"
-                        android:padding="20dp" />
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/proovedores" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/envios"
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
+                        android:id="@+id/proovedores"
                         android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:text="Envios"
-                        android:textColor="@color/black"
-                        android:textSize="27sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="-20dp"
-                        android:padding="20dp" />
+                        android:layout_height="200dp"
+                        android:src="@drawable/proveedor"
+                        android:contentDescription="Proveedores" />
+
+
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:layout_gravity="left"
-                        android:src="@drawable/envios" />
-                </LinearLayout>
+                        android:id="@+id/envios"
+                        android:layout_width="180dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/envios"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Envíos" />
             </LinearLayout>
 
             <!-- Fila 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
 
-                <LinearLayout
-                    android:id="@+id/pagos"
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
 
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Pagos"
-                        android:textSize="27sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:padding="20dp" />
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/pagos" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/inventarios"
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-10dp"
-                        android:text="Inventarios"
-                        android:textColor="@color/black"
-                        android:textSize="27sp"
-                        android:textStyle="bold"
-                        android:padding="20dp" />
+                        android:id="@+id/pagos"
+                        android:layout_width="180dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/pagos"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Pagos" />
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:layout_gravity="left"
-                        android:src="@drawable/inventarios" />
-                </LinearLayout>
-
-
+                        android:id="@+id/inventarios"
+                        android:layout_width="180dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/inventarioss"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Inventarios" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/clientes"
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:layout_marginStart="90dp"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Cliente"
-                        android:gravity="center_horizontal"
-                        android:textSize="27sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:padding="20dp" />
-
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/clientes" />
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
+                        android:id="@+id/clientes"
+                        android:layout_marginStart="90dp"
+                        android:layout_width="180dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/clientes"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Clientes" />
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

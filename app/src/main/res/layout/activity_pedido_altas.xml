@@ -102,21 +102,39 @@
                 android:background="@drawable/bordesspinner"/>
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Cliente"/>
         <Spinner
             android:id="@+id/spinnerCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
             android:spinnerMode="dropdown"
             android:background="@drawable/bordesspinner"
             android:padding="12dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Proveedor"/>
         <Spinner
             android:id="@+id/spinnerProveedor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:spinnerMode="dropdown"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/bordesspinner"
             android:padding="12dp"/>
     </LinearLayout>

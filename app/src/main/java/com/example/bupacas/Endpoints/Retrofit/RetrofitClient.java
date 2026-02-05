@@ -1,9 +1,15 @@
 package com.example.bupacas.Endpoints.Retrofit;
 
 import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
+import com.example.bupacas.Endpoints.Service.BancoService;
 import com.example.bupacas.Endpoints.Service.ClienteService;
+import com.example.bupacas.Endpoints.Service.GastoService;
+import com.example.bupacas.Endpoints.Service.PapaService;
 import com.example.bupacas.Endpoints.Service.PedidoService;
+import com.example.bupacas.Endpoints.Service.ProductoService;
 import com.example.bupacas.Endpoints.Service.ProveedorService;
+import com.example.bupacas.Endpoints.Service.TelefonoClienteService;
+import com.example.bupacas.Endpoints.Service.TelefonoProvService;
 import com.example.bupacas.Endpoints.Service.UsuarioService;
 
 import okhttp3.OkHttpClient;
@@ -52,5 +58,34 @@ public class RetrofitClient {
     public static PedidoService getPedidoService()
     {
         return getRetrofitInstance().create(PedidoService.class);
+    }
+    public static ProductoService getProductoService()
+    {
+        return getRetrofitInstance().create(ProductoService.class);
+    }
+
+    public static PapaService getPapaService()
+    {
+        return getRetrofitInstance().create(PapaService.class);
+    }
+
+    public static TelefonoProvService getTelefonoProvService()
+    {
+        return getRetrofitInstance().create(TelefonoProvService.class);
+    }
+
+    public static TelefonoClienteService getTelefonoClienteService()
+    {
+        return getRetrofitInstance().create(TelefonoClienteService.class);
+    }
+
+    public static BancoService getBancoService()
+    {
+        return getRetrofitInstance().create(BancoService.class);
+    }
+
+    public static GastoService getGastoService()
+    {
+        return getRetrofitInstance().create(GastoService.class);
     }
 }

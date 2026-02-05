@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -124,7 +123,7 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
 
                         @Override
                         public void onFailure(Call<List<ProveedorDTO>> call, Throwable t) {
-                            Toast.makeText(PedidoAltas.this, "Error cargando proveedores", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PedidoAltas.this, "Error cargando spinnerProveedores", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -132,7 +131,7 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
     private void cargarSpinnerClientes() {
         List<String> listaClientes = new ArrayList<>();
         for (ClienteDTO c : clientes) {
-            listaClientes.add("ID: "+c.getIdCliente() + " - RFC: " + c.getRfc_Clte());
+            listaClientes.add("RFC: "+c.getRfc_Clte() + " - Nombre: " + c.getNombre_Clte());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -147,7 +146,7 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
     private void cargarSpinnerProveedores() {
         List<String> listaProveedores = new ArrayList<>();
         for (ProveedorDTO p : proveedores) {
-            listaProveedores.add("ID: "+p.getIdProveedor() + " - RFC: " + p.getRFC_prov());
+            listaProveedores.add("RFC: "+p.getRFC_prov() + " - Nombre: " + p.getNombre_prov());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -208,28 +207,21 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
         progressDialog.show();
 
         Call<PedidoDTO> call = RetrofitClient.getPedidoService().createPedido(pedidoDTO);
-        Log.d("RETROFIT_PEDIDO", "Iniciando llamada a: " + call.request().url().toString());
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Log.d("JSON_PEDIDO", "Enviando: " + gson.toJson(pedidoDTO));
         call.enqueue(new Callback<PedidoDTO>() {
             @Override
             public void onResponse(Call<PedidoDTO> call, Response<PedidoDTO> response) {
                 progressDialog.dismiss();
-                Log.d("RETROFIT_PEDIDO", "onResponse - Código: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.d("RETROFIT_PEDIDO", "Éxito: " + response.body().toString());
                     Toast.makeText(PedidoAltas.this, "Pedido creado correctamente", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Log.e("RETROFIT_PEDIDO", "Error HTTP: " + response.code());
                     try {
                         if (response.errorBody() != null) {
                             String err = response.errorBody().string();
-                            Log.e("RETROFIT_PEDIDO", "Error body: " + err);
                             Toast.makeText(PedidoAltas.this, "Error servidor: " + err, Toast.LENGTH_LONG).show();
                         }
                     } catch (Exception e) {
-                        Log.e("RETROFIT_PEDIDO", "Error al leer errorBody", e);
+                        e.printStackTrace();
                     }
                 }
             }
@@ -237,7 +229,6 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onFailure(Call<PedidoDTO> call, Throwable t) {
                 progressDialog.dismiss();
-                Log.e("RETROFIT_PEDIDO", "onFailure: " + t.getClass().getSimpleName() + " - " + t.getMessage(), t);
                 Toast.makeText(PedidoAltas.this, "Fallo conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

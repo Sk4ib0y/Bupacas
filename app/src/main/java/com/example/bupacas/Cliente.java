@@ -3,7 +3,6 @@ package com.example.bupacas;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -45,7 +44,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_proveedores);
+        setContentView(R.layout.activity_cliente);
 
         recyclerClientes = findViewById(R.id.listita);
         atras = findViewById(R.id.atras);
@@ -74,22 +73,18 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         call.enqueue(new Callback<List<ClienteDTO>>() {
             @Override
             public void onResponse(Call<List<ClienteDTO>> call, Response<List<ClienteDTO>> response) {
-                Log.d("Clientes", "onResponse llamado - Código: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.d("Clientes", "Datos recibidos: " + response.body().size() + " clientes");
                     listaClientes.clear();
                     listaClientes.addAll(response.body());
                     adaptadorCliente.actualizarLista(listaClientes);
                     recyclerClientes.requestLayout();
                 } else {
-                    Log.e("Clientes", "Respuesta no exitosa - Código: " + response.code());
                     Toast.makeText(Cliente.this, "Error al cargar clientes", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<ClienteDTO>> call, Throwable t) {
-                Log.e("Cliente", "Fallo en Retrofit: " + t.getMessage(), t);
                 Toast.makeText(Cliente.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

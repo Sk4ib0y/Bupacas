@@ -12,55 +12,55 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bupacas.Datos.DatosProv;
+import com.example.bupacas.Datos.DatosPedido;
+import com.example.bupacas.Edit.PedidoEdit;
 import com.example.bupacas.Endpoints.DTO.PedidoDTO;
-import com.example.bupacas.Envios;
-import com.example.bupacas.Misceláneo.NoDisponible;
+import com.example.bupacas.Pedido;
 import com.example.bupacas.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorEnvios extends RecyclerView.Adapter<AdaptadorEnvios.ViewHolder>  {
+public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.ViewHolder>  {
 
 
     private final Context context;
     private final List<PedidoDTO> listaPedido;
 
-    public AdaptadorEnvios(Context context, List<PedidoDTO> pedidoDTOS) {
+    public AdaptadorPedidos(Context context, List<PedidoDTO> pedidoDTOS) {
         this.context = context;
         this.listaPedido = new ArrayList<>(pedidoDTOS);
     }
 
     @NonNull
     @Override
-    public AdaptadorEnvios.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdaptadorPedidos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.modeloenvios, parent, false);
-        return new AdaptadorEnvios.ViewHolder(view);
+        return new AdaptadorPedidos.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdaptadorEnvios.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdaptadorPedidos.ViewHolder holder, int position) {
         PedidoDTO pedidoDTO = listaPedido.get(position);
         holder.textView.setText(pedidoDTO.getDestino());
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent=new Intent(context, DatosProv.class);
-            ((Envios) context).send(pedidoDTO, intent);
+            Intent intent=new Intent(context, DatosPedido.class);
+            ((Pedido) context).send(pedidoDTO, intent);
         });
 
         holder.delete.setOnClickListener(v -> {
-            if (context instanceof Envios) {
-                ((Envios) context).onPedidoDeleteClick(pedidoDTO.getId());
+            if (context instanceof Pedido) {
+                ((Pedido) context).onPedidoDeleteClick(pedidoDTO.getId());
             } else {
                 Toast.makeText(context, "Error: contexto no es Pedido", Toast.LENGTH_SHORT).show();
             }
         });
 
         holder.edit.setOnClickListener(v -> {
-            if (context instanceof Envios) {
-                Intent intent=new Intent(context, NoDisponible.class);
-                ((Envios) context).send(pedidoDTO, intent);
+            if (context instanceof Pedido) {
+                Intent intent=new Intent(context, PedidoEdit.class);
+                ((Pedido) context).send(pedidoDTO, intent);
             }
             else {
                 Toast.makeText(context, "No disponible", Toast.LENGTH_SHORT).show();

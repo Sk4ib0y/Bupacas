@@ -6,21 +6,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bupacas.Altas.NuevoUsuario;
 import com.example.bupacas.Misceláneo.InicioSesionRegistro;
-import com.example.bupacas.Misceláneo.NoDisponible;
 import com.example.bupacas.Misceláneo.SesionManager;
 import com.example.bupacas.Misceláneo.Soporte;
 
 public class Principal extends AppCompatActivity implements View.OnClickListener {
 
-    LinearLayout proovedores, envios, pagos, inventarios, cliente;
+    ImageView proovedores, envios, pagos, inventarios, cliente;
     ImageView perfil, soporte;
     Button logoutb, cancelar;
     FrameLayout logout;
@@ -89,12 +86,12 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         }
         else if(envios.getId() == id)
         {
-            Intent intent= new Intent(this, Envios.class);
+            Intent intent= new Intent(this, Pedido.class);
             startActivity(intent);
         }
         else if(pagos.getId()== id)
         {
-            Intent intent= new Intent(this, Pagos.class);
+            Intent intent= new Intent(this, Banco.class);
             startActivity(intent);
         }
         else if (inventarios.getId()==id)

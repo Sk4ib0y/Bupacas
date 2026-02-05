@@ -15,6 +15,40 @@
         android:theme="@style/Theme.Bupacas"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Altas.GastoAltas"
+            android:exported="false" />
+        <activity
+            android:name=".Datos.DatosBanco"
+            android:exported="false" />
+        <activity
+            android:name=".Edit.BancoEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Altas.BancoAltas"
+            android:exported="false" />
+        <activity
+            android:name=".Altas.AltaTelefonoCliente"
+            android:exported="false" />
+        <activity
+            android:name=".Datos.DatosCliente"
+            android:exported="false" />
+        <activity
+            android:name=".Altas.AltaTelefonoProv"
+            android:exported="false" />
+        <activity
+            android:name=".Altas.PapaAltas"
+            android:exported="false" />
+        <activity
+            android:name=".Datos.DatosProducto"
+            android:exported="false" />
+        <activity
+            android:name=".Edit.ProductoEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Altas.ProductoAltas"
+            android:exported="false" />
         <activity
             android:name=".Edit.PedidoEdit"
             android:exported="false" />
@@ -31,7 +65,7 @@
             android:name=".Cliente"
             android:exported="false" />
         <activity
-            android:name=".Pagos"
+            android:name=".Banco"
             android:exported="false" />
         <activity
             android:name=".Soporte.Privacidad"
@@ -46,13 +80,10 @@
             android:name=".Soporte.GuiaRapida"
             android:exported="false" />
         <activity
-            android:name=".Altas.EnviosAltas"
-            android:exported="false" />
-        <activity
             android:name=".Altas.ProovedorAltas"
             android:exported="false" />
         <activity
-            android:name=".Datos.DatosEnvio"
+            android:name=".Datos.DatosPedido"
             android:exported="false" />
         <activity
             android:name=".Misceláneo.InicioSesionRegistro"
@@ -64,7 +95,7 @@
             android:name=".Inventarios"
             android:exported="false" />
         <activity
-            android:name=".Envios"
+            android:name=".Pedido"
             android:exported="false" />
         <activity
             android:name=".Proveedores"
@@ -84,6 +115,8 @@
         <activity
             android:name=".Misceláneo.NoDisponible"
             android:exported="false" />
+        <activity android:name=".Edit.GastoEdit"
+            android:exported="false"/>
         <activity
             android:name=".Misceláneo.MainActivity"
             android:exported="true">

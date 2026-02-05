@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.bupacas.Datos.DatosCliente;
 import com.example.bupacas.Datos.DatosProv;
 import com.example.bupacas.Edit.ClienteEdit;
 import com.example.bupacas.Edit.ProveedorEdit;
@@ -47,7 +48,7 @@ public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.View
         holder.tvRFC.setText(clienteDTO.getRfc_Clte());
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent=new Intent(context, DatosProv.class);
+            Intent intent=new Intent(context, DatosCliente.class);
             ((Cliente) context).send(clienteDTO, intent);
         });
 

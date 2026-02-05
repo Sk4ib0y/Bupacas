@@ -15,7 +15,7 @@ import retrofit2.http.Path;
 public interface PedidoService
 {
     @GET("/Bupacas/api/pedido")
-    Call<List<PedidoDTO>> getAllPedidoes();
+    Call<List<PedidoDTO>> getAllPedidos();
 
     @GET("/Bupacas/api/pedido/{id}")
     Call<PedidoDTO>getPedidoById(@Path("id")int id);

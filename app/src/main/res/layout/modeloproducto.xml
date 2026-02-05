@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_empaque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Empaque:"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="#212121" />
+
+        <!-- Cantidad -->
+        <TextView
+            android:id="@+id/tv_cantidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Cantidad: 25 kg"
+            android:textColor="#455A64"
+            android:textSize="16sp" />
+
+
+
+        <!-- Merma -->
+        <TextView
+            android:id="@+id/tv_merma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Merma: 5%"
+            android:textColor="#455A64"
+            android:textSize="16sp" />
+
+        <!-- Costo / Ganancia -->
+        <TextView
+            android:id="@+id/tv_costo_ganancia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Ganancia: $450.50"
+            android:textColor="#2E7D32"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <!-- Botones de acción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/editar"
+                android:contentDescription="Editar producto" />
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/basurita3"
+                android:contentDescription="Eliminar producto" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

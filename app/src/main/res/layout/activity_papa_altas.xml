@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondogrande"
+    android:orientation="vertical"
+    tools:context=".Altas.ProductoAltas">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/atras"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/flecha"
+            android:contentDescription="Regresar" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="-30dp"
+            android:src="@drawable/papa"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="#80FFFFFF"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_tipo"
+                android:layout_width="220dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tamaño"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_tamaño"
+                android:layout_width="220dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Variedad"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_variedad"
+                android:layout_width="220dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Añadir al registro"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:background="@drawable/colorb"
+        app:backgroundTint="@null" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="130dp"
+        android:background="#CFD8DC"
+        android:elevation="8dp">
+
+        <ImageView
+            android:id="@+id/casita"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="32dp"
+            android:src="@drawable/casita"
+            android:contentDescription="Inicio"/>
+
+        <ImageView
+            android:id="@+id/soporte"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="32dp"
+            android:src="@drawable/mensajitos"
+            android:contentDescription="Soporte"/>
+    </LinearLayout>
+
+</LinearLayout>

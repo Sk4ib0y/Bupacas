@@ -81,6 +81,14 @@
             android:textSize="17sp"
             android:textColor="#455A64"
             android:lineSpacingExtra="8dp"/>
+        <TextView
+            android:id="@+id/telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cliquea para añadir un teléfono"
+            android:textSize="17sp"
+            android:textColor="#0000EE"
+            android:lineSpacingExtra="8dp"/>
     </LinearLayout>
 
     <!-- ESPACIO -->

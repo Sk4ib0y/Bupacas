@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#ECEFF1">
+
+    <!-- SCROLL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="24dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/fondopequeno">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/banco" />
+
+                <TextView
+                    android:id="@+id/titulo_envio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:text="Detalle del Banco"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="#546E7A" />
+
+            <ImageView
+                android:id="@+id/atras"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/flecha" />
+
+            <!-- CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <!-- Título de sección -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Información del Banco"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#37474F"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Datos clave de la tabla Pedido -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ID del Banco"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_id_banco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estado"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/estado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tipo"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_tipo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cantidad"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_cantidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ID Proveedor"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_proveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Deudas/gastos con este banco"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#37474F" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listita"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="12dp"
+                tools:listitem="@layout/modeloproducto"
+                android:overScrollMode="never"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Añadir gasto"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:textSize="30dp"
+                android:id="@+id/send"
+                android:background="@drawable/colorb"
+                app:backgroundTint="@null"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#CFD8DC"
+        android:elevation="6dp">
+
+        <ImageView
+            android:id="@+id/casita"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="32dp"
+            android:src="@drawable/casita" />
+
+        <ImageView
+            android:id="@+id/soporte"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="32dp"
+            android:src="@drawable/mensajitos" />
+    </LinearLayout>
+
+</LinearLayout>

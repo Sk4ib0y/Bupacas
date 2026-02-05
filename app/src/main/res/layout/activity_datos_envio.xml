@@ -1,166 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Datos.DatosEnvio">
+    android:background="#ECEFF1">
 
-    <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:id="@+id/atras"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/flecha"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="32dp"
-            android:textColor="@color/black"
-            android:text="Nombre del envío"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha de realización"
-        android:textColor="@color/black"
-        android:textSize="23dp"
-        android:fontFamily="serif"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/fondoenvio"/>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="170dp"
-        android:src="@drawable/camion2"/>
+    <!-- SCROLL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_marginTop="13dp"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/fondoenvio">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="30dp"
-                android:text="Destinatario: Juan Perez"
-                android:textColor="@color/black"
-                android:id="@+id/destinatario"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:text="Producto: Papa"
-                android:textColor="@color/black"
-                android:id="@+id/producto"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="160dp"
-                android:layout_height="24dp"
-                android:text="Localizacion: Calle 123"
-                android:textColor="@color/black"
-                android:id="@+id/localizacion"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:text="Pago:$250"
-                android:textColor="@color/black"
-                android:id="@+id/pagos"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="160dp"
-                android:textColor="@color/black"
-                android:layout_height="24dp"
-                android:text="Proovedor: PapaFarm"
-                android:id="@+id/proovedor"
-                android:textStyle="bold"/>
-        </LinearLayout>
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="240dp"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:layout_marginLeft="120dp">
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Datos del Producto"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="22dp"
-            android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="29.6dp"
-            android:textColor="@color/black"
-            android:text="Cantidad (Kg): 10kg"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:id="@+id/peso"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="29.6dp"
-            android:text="Num. Cajas: 3"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:id="@+id/ncajas"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="29.6dp"
-            android:text="Num. Tarimas: 1"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:id="@+id/ntarimas"/>
+            android:orientation="vertical">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="24dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/fondopequeno">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/camion3" />
+
+                <TextView
+                    android:id="@+id/titulo_envio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:text="Detalle del Pedido"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="#546E7A" />
+
+            <ImageView
+                android:id="@+id/atras"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/flecha" />
+
+            <!-- CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <!-- Título de sección -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Información del Pedido"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#37474F"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Datos clave de la tabla Pedido -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ID del Pedido"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_id_pedido"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fecha de realización"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_fecha"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Destino"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_destino"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Código Postal"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_cod_postal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cliente"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_cliente"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Proveedor"
+                            android:textColor="#607D8B"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_proveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="---"
+                            android:textSize="18sp"
+                            android:textColor="#212121"
+                            android:layout_marginBottom="8dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Productos en este pedido"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#37474F" />
+
+            <!-- RecyclerView de productos -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listita"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="12dp"
+                tools:listitem="@layout/modeloproducto"
+                android:overScrollMode="never"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Añadir producto"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:textSize="30dp"
+                android:id="@+id/send"
+                android:background="@drawable/colorb"
+                app:backgroundTint="@null"/>
+        </LinearLayout>
+    </ScrollView>
 
 
-    </LinearLayout>
 
-    <View
-        android:layout_width="360dp"
-        android:layout_gravity="center"
-        android:layout_height="1dp"
-        android:layout_marginTop="100dp"
-        android:background="@color/black"/>
+    <!-- FOOTER FIJO -->
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#CFD8DC"
+        android:elevation="6dp">
+
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"
-            android:src="@drawable/casita"
-            android:id="@+id/casita"/>
+            android:id="@+id/casita"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="32dp"
+            android:src="@drawable/casita" />
+
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/mensajitos"
-            android:id="@+id/soporte"/>
+            android:id="@+id/soporte"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="32dp"
+            android:src="@drawable/mensajitos" />
     </LinearLayout>
+
 </LinearLayout>
