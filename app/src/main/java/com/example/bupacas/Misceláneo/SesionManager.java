@@ -32,17 +32,6 @@ public class SesionManager {
         return prefs.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
-    public boolean isAdmin() {
-        return prefs.getBoolean(KEY_IS_ADMIN, false);
-    }
-
-    public Integer getUsuarioId() {
-        return prefs.getInt(KEY_ID, -1);
-    }
-
-    public String getUsuarioNombre() {
-        return prefs.getString(KEY_NOMBRE, "");
-    }
 
     public void logout() {
         editor.clear();

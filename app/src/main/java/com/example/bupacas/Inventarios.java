@@ -13,12 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bupacas.Adaptadores.AdaptadorInventario;
-import com.example.bupacas.Datos.DatosProducto;
 import com.example.bupacas.Endpoints.DTO.PapaDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Misceláneo.Actions;
-import com.example.bupacas.Misceláneo.NoDisponible;
-import com.example.bupacas.Misceláneo.Soporte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +26,7 @@ import retrofit2.Response;
 
 public class Inventarios extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, comentarios;
+    ImageView atras, casita;
     RecyclerView listita;
     AdaptadorInventario adaptadorInventario;
     List<PapaDTO> listapapas= new ArrayList<>();
@@ -41,7 +38,6 @@ public class Inventarios extends AppCompatActivity implements View.OnClickListen
 
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
         listita=findViewById(R.id.listita);
 
         adaptadorInventario=new AdaptadorInventario(listapapas, this, new Actions() {
@@ -60,7 +56,6 @@ public class Inventarios extends AppCompatActivity implements View.OnClickListen
         listita.setAdapter(adaptadorInventario);
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         cargarInventario();
     }
 
@@ -76,11 +71,7 @@ public class Inventarios extends AppCompatActivity implements View.OnClickListen
             Intent intent= new Intent(this, Principal.class);
             startActivity(intent);
         }
-        else if(comentarios.getId()==id)
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
+
     }
 
     private void cargarInventario()

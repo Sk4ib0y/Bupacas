@@ -33,7 +33,7 @@
         android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:background="#80FFFFFF">
+        android:background="@drawable/bordesredondos">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,12 +145,5 @@
             android:src="@drawable/casita"
             android:contentDescription="Inicio"/>
 
-        <ImageView
-            android:id="@+id/soporte"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="32dp"
-            android:src="@drawable/mensajitos"
-            android:contentDescription="Soporte"/>
     </LinearLayout>
 </LinearLayout>

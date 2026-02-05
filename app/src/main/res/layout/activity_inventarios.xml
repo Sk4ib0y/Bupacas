@@ -58,12 +58,5 @@
             android:src="@drawable/casita"
             android:contentDescription="Inicio"/>
 
-        <ImageView
-            android:id="@+id/soporte"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="32dp"
-            android:src="@drawable/mensajitos"
-            android:contentDescription="Soporte"/>
     </LinearLayout>
 </LinearLayout>

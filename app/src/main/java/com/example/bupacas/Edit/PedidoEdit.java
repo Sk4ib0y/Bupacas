@@ -14,18 +14,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.bupacas.Altas.PedidoAltas;
 import com.example.bupacas.Endpoints.DTO.ClienteDTO;
 import com.example.bupacas.Endpoints.DTO.PedidoDTO;
 import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 import com.google.gson.Gson;
@@ -43,7 +37,7 @@ public class PedidoEdit extends AppCompatActivity implements View.OnClickListene
 
     EditText etFecha, etDestino, etCp;
     Button send;
-    ImageView atras, casita, comentarios;
+    ImageView atras, casita;
     List<ClienteDTO> clientes;
     List<ProveedorDTO> proveedores;
     Spinner spinnerCliente, spinnerProveedor;
@@ -63,7 +57,6 @@ public class PedidoEdit extends AppCompatActivity implements View.OnClickListene
 
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
         etDestino=findViewById(R.id.destino);
         etCp=findViewById(R.id.cp);
         etFecha = findViewById(R.id.etFecha);
@@ -83,7 +76,6 @@ public class PedidoEdit extends AppCompatActivity implements View.OnClickListene
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         Calendar calendar = Calendar.getInstance();
 
         send.setOnClickListener(v->
@@ -192,11 +184,7 @@ public class PedidoEdit extends AppCompatActivity implements View.OnClickListene
             startActivity(new Intent(this, Principal.class));
             finish();
         }
-        else if(id==comentarios.getId())
-        {
-            startActivity(new Intent(this, Soporte.class));
-            finish();
-        }
+
         else if(id==atras.getId())
         {
             finish();

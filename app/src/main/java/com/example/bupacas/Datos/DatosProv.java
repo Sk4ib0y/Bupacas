@@ -11,15 +11,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bupacas.Altas.AltaTelefonoProv;
 import com.example.bupacas.Endpoints.DTO.TelefonoProvDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.NoDisponible;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -29,7 +24,7 @@ import retrofit2.Response;
 
 public class DatosProv extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, soporte;
+    ImageView atras, casita;
     TextView nombre, datos, telefono;
     String nombreStr, rfc, empresa, zona;
     int idProv;
@@ -43,14 +38,12 @@ public class DatosProv extends AppCompatActivity implements View.OnClickListener
         atras=findViewById(R.id.atras);
         atras.setOnClickListener(this);
         casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
         telefono=findViewById(R.id.telefono);
         nombre=findViewById(R.id.nombre);
         datos=findViewById(R.id.datos);
 
         telefono.setOnClickListener(this);
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
 
         Intent intent=getIntent();
         idProv=intent.getIntExtra("id",-1);
@@ -76,10 +69,7 @@ public class DatosProv extends AppCompatActivity implements View.OnClickListener
         {
             startActivity(new Intent(this, Principal.class));
         }
-        else if(id==soporte.getId())
-        {
-            startActivity(new Intent(this, Soporte.class));
-        }
+
         else if(id==telefono.getId() && telefono.getText().equals("Cliquea para añadir un teléfono"))
         {
             Intent intentito=new Intent(this, AltaTelefonoProv.class);

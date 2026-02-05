@@ -8,18 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bupacas.Endpoints.DTO.ProductoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -33,7 +28,7 @@ public class ProductoAltas extends AppCompatActivity implements View.OnClickList
 
     private EditText cantidad, empaque, merma, costoGanancia;
     private Button send;
-    private ImageView casita, comentarios, volver;
+    private ImageView casita, volver;
     private int idPedido, idProveedor;
 
     @Override
@@ -52,10 +47,8 @@ public class ProductoAltas extends AppCompatActivity implements View.OnClickList
         send = findViewById(R.id.send);
         volver = findViewById(R.id.atras);
         casita = findViewById(R.id.casita);
-        comentarios = findViewById(R.id.soporte);
 
         casita.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         volver.setOnClickListener(this);
         send.setOnClickListener(this);
 
@@ -70,11 +63,7 @@ public class ProductoAltas extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(this, Principal.class));
             finish();
         }
-        else if(comentarios.getId()==id)
-        {
-            startActivity(new Intent(this, Soporte.class));
-            finish();
-        }
+
         else if(volver.getId()==id)
         {
             finish();

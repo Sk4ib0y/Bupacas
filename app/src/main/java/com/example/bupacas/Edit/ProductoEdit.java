@@ -13,14 +13,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.bupacas.Altas.ProductoAltas;
 import com.example.bupacas.Endpoints.DTO.ProductoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -34,7 +29,7 @@ public class ProductoEdit extends AppCompatActivity implements View.OnClickListe
 
     private EditText cantidad, empaque, merma, costoGanancia;
     private Button send;
-    private ImageView casita, comentarios, volver;
+    private ImageView casita, volver;
     private String empaqueOriginal,mermaOriginal;
     private Integer cantidadOriginal;
     private String costoOriginal;
@@ -63,7 +58,6 @@ public class ProductoEdit extends AppCompatActivity implements View.OnClickListe
         send = findViewById(R.id.send);
         volver = findViewById(R.id.atras);
         casita = findViewById(R.id.casita);
-        comentarios = findViewById(R.id.soporte);
 
         empaque.setText(empaqueOriginal);
         merma.setText(mermaOriginal);
@@ -71,7 +65,6 @@ public class ProductoEdit extends AppCompatActivity implements View.OnClickListe
         costoGanancia.setText(costoOriginal);
 
         casita.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         volver.setOnClickListener(this);
         send.setOnClickListener(this);
 
@@ -86,11 +79,7 @@ public class ProductoEdit extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, Principal.class));
             finish();
         }
-        else if(comentarios.getId()==id)
-        {
-            startActivity(new Intent(this, Soporte.class));
-            finish();
-        }
+
         else if(volver.getId()==id)
         {
             finish();

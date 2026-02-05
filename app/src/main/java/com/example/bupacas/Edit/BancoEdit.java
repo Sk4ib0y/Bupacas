@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bupacas.Endpoints.DTO.BancoDTO;
 import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -32,7 +31,7 @@ import retrofit2.Response;
 
 public class BancoEdit extends AppCompatActivity implements View.OnClickListener{
     EditText estado, tipo, cantidad;
-    ImageView atras, casita, soporte;
+    ImageView atras, casita;
     Button añadir;
     Spinner spinnerProveedores;
     String tipoStr, estadoStr, cantidadStr;
@@ -50,7 +49,6 @@ public class BancoEdit extends AppCompatActivity implements View.OnClickListener
         atras=findViewById(R.id.atras);
         añadir=findViewById(R.id.send);
         casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
         spinnerProveedores =findViewById(R.id.spinnerProveedor);
 
         Intent intent=getIntent();
@@ -65,7 +63,6 @@ public class BancoEdit extends AppCompatActivity implements View.OnClickListener
         cantidad.setText(String.valueOf(cantidadStr));
 
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         añadir.setOnClickListener(this);
         atras.setOnClickListener(this);
 
@@ -83,11 +80,6 @@ public class BancoEdit extends AppCompatActivity implements View.OnClickListener
         else if(casita.getId()==id)
         {
             Intent intent= new Intent(this, Principal.class);
-            startActivity(intent);
-        }
-        else if(soporte.getId()==id)
-        {
-            Intent intent= new Intent(this, Soporte.class);
             startActivity(intent);
         }
         else if(atras.getId()==id)

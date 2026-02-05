@@ -12,14 +12,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.bupacas.Altas.ProovedorAltas;
 import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -31,7 +26,7 @@ public class ProveedorEdit extends AppCompatActivity implements View.OnClickList
 
 
     EditText rfc, nombre, zona, empresa;
-    ImageView atras, casita, soporte;
+    ImageView atras, casita;
     Button editar;
     String rfcOriginal, nombreOriginal, empresaOriginal, zonaOriginal;
     int idProveedor;
@@ -49,10 +44,8 @@ public class ProveedorEdit extends AppCompatActivity implements View.OnClickList
         empresa=findViewById(R.id.empresa);
         editar=findViewById(R.id.send);
         casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
 
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         editar.setOnClickListener(this);
         atras.setOnClickListener(this);
 
@@ -82,11 +75,7 @@ public class ProveedorEdit extends AppCompatActivity implements View.OnClickList
             Intent intent= new Intent(this, Principal.class);
             startActivity(intent);
         }
-        else if(soporte.getId()==id)
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
+
         else if(atras.getId()==id)
         {
             finish();

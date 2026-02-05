@@ -21,10 +21,8 @@ import com.example.bupacas.Edit.ProductoEdit;
 import com.example.bupacas.Endpoints.DTO.ProductoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Misceláneo.Actions;
-import com.example.bupacas.Misceláneo.NoDisponible;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
-import com.example.bupacas.Misceláneo.Soporte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +33,7 @@ import retrofit2.Response;
 
 public class DatosPedido extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, comentarios;
+    ImageView atras, casita;
     TextView id, cliente, proveedor, destino, fecha, cp;
     private int idInt, clienteId, proveedorId;
     private String destinoStr, fechaStr, cpStr;
@@ -52,7 +50,6 @@ public class DatosPedido extends AppCompatActivity implements View.OnClickListen
 
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
         id=findViewById(R.id.tv_id_pedido);
         cliente=findViewById(R.id.tv_cliente);
         proveedor=findViewById(R.id.tv_proveedor);
@@ -97,7 +94,6 @@ public class DatosPedido extends AppCompatActivity implements View.OnClickListen
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         añadir.setOnClickListener(this);
 
         Intent intent=getIntent();
@@ -133,11 +129,7 @@ public class DatosPedido extends AppCompatActivity implements View.OnClickListen
             startActivity(intent);
             finish();
         }
-        else if(id== comentarios.getId())
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
+
         else if(id==añadir.getId())
         {
             Intent intent=new Intent(this, ProductoAltas.class);

@@ -12,29 +12,19 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bupacas.Adaptadores.AdaptadorGastos;
-import com.example.bupacas.Adaptadores.AdaptadorProducto;
 import com.example.bupacas.Altas.GastoAltas;
-import com.example.bupacas.Altas.ProductoAltas;
 import com.example.bupacas.Edit.GastoEdit;
-import com.example.bupacas.Edit.ProductoEdit;
-import com.example.bupacas.Endpoints.DTO.BancoDTO;
 import com.example.bupacas.Endpoints.DTO.GastoDTO;
-import com.example.bupacas.Endpoints.DTO.ProductoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Endpoints.Service.GastoService;
 import com.example.bupacas.Misceláneo.Actions;
-import com.example.bupacas.Misceláneo.NoDisponible;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,33 +34,33 @@ import retrofit2.Response;
 
 public class DatosBanco extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, comentarios;
+    ImageView atras, casita;
     TextView id, proveedor, tipo, estado, cantidad;
     private int idInt, proveedorId;
     private String estadoStr, cantidadStr, tipoStr;
     RecyclerView listita;
     Button añadir;
     AdaptadorGastos adaptadorGastos;
-    List<GastoDTO> listaGastos=new ArrayList<>();
+    List<GastoDTO> listaGastos = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_datos_banco);
 
-        atras=findViewById(R.id.atras);
-        casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
-        id=findViewById(R.id.tv_id_banco);
-        tipo=findViewById(R.id.tv_tipo);
-        proveedor=findViewById(R.id.tv_proveedor);
-        estado=findViewById(R.id.estado);
-        cantidad=findViewById(R.id.tv_cantidad);
-        listita=findViewById(R.id.listita);
+        atras = findViewById(R.id.atras);
+        casita = findViewById(R.id.casita);
+        id = findViewById(R.id.tv_id_banco);
+        tipo = findViewById(R.id.tv_tipo);
+        proveedor = findViewById(R.id.tv_proveedor);
+        estado = findViewById(R.id.estado);
+        cantidad = findViewById(R.id.tv_cantidad);
+        listita = findViewById(R.id.listita);
 
         listita.setLayoutManager(new LinearLayoutManager(this));
-        añadir=findViewById(R.id.send);
-        adaptadorGastos=new AdaptadorGastos(listaGastos, this, new Actions() {
+        añadir = findViewById(R.id.send);
+        adaptadorGastos = new AdaptadorGastos(listaGastos, this, new Actions() {
             @Override
             public void onEdit(int position) {
                 GastoDTO gastoDTO = listaGastos.get(position);
@@ -87,11 +77,11 @@ public class DatosBanco extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onDelete(int position) {
-                GastoDTO gastoDTO=listaGastos.get(position);
+                GastoDTO gastoDTO = listaGastos.get(position);
                 new AlertDialog.Builder(DatosBanco.this)
                         .setTitle("Eliminar gasto")
-                        .setMessage("¿Eliminar "+gastoDTO.getTipo() +"?")
-                        .setPositiveButton("Si",(d, w) -> {
+                        .setMessage("¿Eliminar " + gastoDTO.getTipo() + "?")
+                        .setPositiveButton("Si", (d, w) -> {
                             eliminarGasto(gastoDTO.getId(), position);
                         })
                         .setNegativeButton("No", null)
@@ -103,15 +93,14 @@ public class DatosBanco extends AppCompatActivity implements View.OnClickListene
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         añadir.setOnClickListener(this);
 
-        Intent intent=getIntent();
-        cantidadStr=intent.getStringExtra("cantidad");
-        estadoStr=intent.getStringExtra("estado");
-        tipoStr=intent.getStringExtra("tipo");
-        idInt=intent.getIntExtra("id", -1);
-        proveedorId=intent.getIntExtra("proveedor", -1);
+        Intent intent = getIntent();
+        cantidadStr = intent.getStringExtra("cantidad");
+        estadoStr = intent.getStringExtra("estado");
+        tipoStr = intent.getStringExtra("tipo");
+        idInt = intent.getIntExtra("id", -1);
+        proveedorId = intent.getIntExtra("proveedor", -1);
 
         cantidad.setText(cantidadStr);
         estado.setText(estadoStr);
@@ -124,28 +113,18 @@ public class DatosBanco extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        int id= v.getId();
+        int id = v.getId();
 
-        if(id==atras.getId())
-        {
+        if (id == atras.getId()) {
             finish();
-        }
-        else if(id==casita.getId())
-        {
-            Intent intent= new Intent(this, Principal.class);
+        } else if (id == casita.getId()) {
+            Intent intent = new Intent(this, Principal.class);
             startActivity(intent);
             finish();
-        }
-        else if(id== comentarios.getId())
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
-        else if(id==añadir.getId())
-        {
-            Intent intent=new Intent(this, GastoAltas.class);
-            intent.putExtra("idBanco",idInt);
-            intent.putExtra("idProveedor",proveedorId);
+        } else if (id == añadir.getId()) {
+            Intent intent = new Intent(this, GastoAltas.class);
+            intent.putExtra("idBanco", idInt);
+            intent.putExtra("idProveedor", proveedorId);
             startActivity(intent);
         }
     }
@@ -169,6 +148,7 @@ public class DatosBanco extends AppCompatActivity implements View.OnClickListene
                                 listaGastos.clear();
                                 listaGastos.addAll(body);
                                 adaptadorGastos.notifyDataSetChanged();
+                                actualizarSaldoNeto();
 
                                 if (listaGastos.isEmpty()) {
                                     Toast.makeText(DatosBanco.this, "Este banco no tiene gastos pendientes", Toast.LENGTH_LONG).show();
@@ -194,8 +174,8 @@ public class DatosBanco extends AppCompatActivity implements View.OnClickListene
                     }
                 });
     }
-    private void eliminarGasto(int id, int position)
-    {
+
+    private void eliminarGasto(int id, int position) {
         RetrofitClient.getGastoService().deleteGasto(id)
                 .enqueue(new Callback<Void>() {
                     @Override
@@ -219,12 +199,20 @@ public class DatosBanco extends AppCompatActivity implements View.OnClickListene
         cargarGastos();
     }
 
-    public void send(GastoDTO gastoDTO, Intent intent)
-    {
+    public void send(GastoDTO gastoDTO, Intent intent) {
         intent.putExtra("cantidad", gastoDTO.getCantidad().toPlainString());
         intent.putExtra("tipo", gastoDTO.getTipo());
         intent.putExtra("id", gastoDTO.getId());
-        intent.putExtra("idBanco",idInt);
+        intent.putExtra("idBanco", idInt);
         startActivity(intent);
+    }
+
+    private void actualizarSaldoNeto() {
+        BigDecimal saldoInicial = new BigDecimal(cantidadStr.replace("$", "").trim()); // limpia si tiene $    }
+        BigDecimal totalGastos = listaGastos.stream().map(g -> g.getCantidad() != null ? g.getCantidad()
+                        : BigDecimal.ZERO)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal saldoNeto = saldoInicial.subtract(totalGastos);
+        cantidad.setText("Saldo neto: $" + String.format("%.2f", saldoNeto.doubleValue()));
     }
 }

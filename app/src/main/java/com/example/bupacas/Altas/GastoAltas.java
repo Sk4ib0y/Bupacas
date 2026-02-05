@@ -12,13 +12,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bupacas.Endpoints.DTO.GastoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -30,7 +26,7 @@ import retrofit2.Response;
 
 public class GastoAltas extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView casita, comentarios, volver;
+    ImageView casita, volver;
     EditText cantidad, tipo;
     Button send;
     private int idBanco;
@@ -42,14 +38,12 @@ public class GastoAltas extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_gasto_altas);
 
         casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
         volver=findViewById(R.id.atras);
         cantidad=findViewById(R.id.cantidad);
         tipo=findViewById(R.id.tipo);
         send=findViewById(R.id.send);
 
         send.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         casita.setOnClickListener(this);
         volver.setOnClickListener(this);
 
@@ -66,10 +60,7 @@ public class GastoAltas extends AppCompatActivity implements View.OnClickListene
         {
             crearGasto();
         }
-        if(id==comentarios.getId())
-        {
-            startActivity(new Intent(this, Soporte.class));
-        }
+
         if(id== casita.getId())
         {
             startActivity(new Intent(this, Principal.class));

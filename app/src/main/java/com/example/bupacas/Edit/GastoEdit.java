@@ -12,14 +12,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.bupacas.Altas.GastoAltas;
 import com.example.bupacas.Endpoints.DTO.GastoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -31,11 +26,11 @@ import retrofit2.Response;
 
 public class GastoEdit extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView casita, comentarios, volver;
-    EditText cantidad, tipo;
-    Button send;
-    private int idBanco,idOg;
-    String tipoStrOG, cantidadStrOG;
+    ImageView casita, volver;
+    EditText etCantidad, etTipo;
+    Button btnGuardar;
+    private int idBanco, idGasto;
+    private GastoDTO gastoOriginal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,108 +38,103 @@ public class GastoEdit extends AppCompatActivity implements View.OnClickListener
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gasto_edit);
 
-        casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
-        volver=findViewById(R.id.atras);
-        cantidad=findViewById(R.id.cantidad);
-        tipo=findViewById(R.id.tipo);
-        send=findViewById(R.id.send);
+        casita = findViewById(R.id.casita);
+        volver = findViewById(R.id.atras);
+        etCantidad = findViewById(R.id.cantidad);
+        etTipo = findViewById(R.id.tipo);
+        btnGuardar = findViewById(R.id.send);
 
-        send.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
+        btnGuardar.setOnClickListener(this);
         casita.setOnClickListener(this);
         volver.setOnClickListener(this);
 
-        Intent intent=getIntent();
-        idBanco=intent.getIntExtra("idBanco",-1);
-        tipoStrOG=intent.getStringExtra("tipo");
-        cantidadStrOG=intent.getStringExtra("cantidad");
-        idOg=intent.getIntExtra("id",-1);
+        Intent intent = getIntent();
+        idBanco = intent.getIntExtra("idBanco", -1);
+        idGasto = intent.getIntExtra("id", -1);
+        String tipoOG = intent.getStringExtra("tipo");
+        String cantidadOG = intent.getStringExtra("cantidad");
 
-        tipo.setText(tipoStrOG);
-        cantidad.setText(cantidadStrOG);
+        if (idGasto == -1 || idBanco == -1) {
+            Toast.makeText(this, "Datos incompletos", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
+        etTipo.setText(tipoOG != null ? tipoOG : "");
+        etCantidad.setText(cantidadOG != null ? cantidadOG : "");
+
+        btnGuardar.setText("Guardar Cambios");
     }
 
     @Override
     public void onClick(View v) {
-        int id=v.getId();
+        int id = v.getId();
 
-        if(id==send.getId())
-        {
+        if (id == btnGuardar.getId()) {
             editarGasto();
-        }
-        if(id==comentarios.getId())
-        {
-            startActivity(new Intent(this, Soporte.class));
-        }
-        if(id== casita.getId())
-        {
+        } else if (id == casita.getId()) {
             startActivity(new Intent(this, Principal.class));
-            finish();
-        }
-        if(volver.getId()==id)
-        {
+            finishAffinity();
+        } else if (id == volver.getId()) {
             finish();
         }
     }
 
-    private void editarGasto()
-    {
-        String tipoStr=tipo.getText().toString().trim();
-        String cantidadStr=cantidad.getText().toString().trim();
+    private void editarGasto() {
+        String tipoStr = etTipo.getText().toString().trim();
+        String cantidadStr = etCantidad.getText().toString().trim();
 
-        if(tipoStr.isEmpty() || cantidadStr.isEmpty())
-        {
-            Toast.makeText(this, "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
+        if (tipoStr.isEmpty() || cantidadStr.isEmpty()) {
+            Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        BigDecimal cantidadBD=new BigDecimal(cantidadStr);
+        BigDecimal cantidadBD;
+        try {
+            cantidadBD = new BigDecimal(cantidadStr);
+        } catch (NumberFormatException e) {
+            etCantidad.setError("Número inválido (ej: 450.50)");
+            etCantidad.requestFocus();
+            return;
+        }
 
-        GastoDTO gastoDTO=new GastoDTO();
-        gastoDTO.setCantidad(cantidadBD);
-        gastoDTO.setIdBanco(idBanco);
-        gastoDTO.setTipo(tipoStr);
+        GastoDTO gastoEditado = new GastoDTO();
+        gastoEditado.setId(idGasto);
+        gastoEditado.setCantidad(cantidadBD);
+        gastoEditado.setTipo(tipoStr);
+        gastoEditado.setIdBanco(idBanco);
 
-        ProgressDialog progressDialog=new ProgressDialog(this);
-        progressDialog.setMessage("Editando...");
-        progressDialog.show();
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Actualizando gasto...");
+        progress.setCancelable(false);
+        progress.show();
 
-        RetrofitClient.getGastoService().updateGasto(idOg,gastoDTO)
+        RetrofitClient.getGastoService().updateGasto(idGasto, gastoEditado)
                 .enqueue(new Callback<GastoDTO>() {
                     @Override
                     public void onResponse(Call<GastoDTO> call, Response<GastoDTO> response) {
-                        progressDialog.dismiss();
+                        progress.dismiss();
 
-
-                        if (response.isSuccessful()) {
-                            Toast.makeText(GastoEdit.this, "Gasto editado correctamente", Toast.LENGTH_SHORT).show();
-                            GastoDTO creado = response.body();
-                            if (creado != null && creado.getId() != null) {
-                                finish();
-                            }
+                        if (response.isSuccessful() && response.body() != null) {
+                            Toast.makeText(GastoEdit.this, "Gasto actualizado correctamente", Toast.LENGTH_SHORT).show();
+                            setResult(RESULT_OK);
+                            finish();
                         } else {
-                            String mensajeError = "Error al editar - Código: " + response.code();
-
+                            String errorMsg = "Error " + response.code();
                             try {
                                 if (response.errorBody() != null) {
-                                    String errorBodyStr = response.errorBody().string();
-                                    mensajeError += " → " + errorBodyStr;
+                                    errorMsg += " - " + response.errorBody().string();
                                 }
-                            } catch (Exception e) {
-                                Log.e("RETROFIT_TELEFONO", "No se pudo leer errorBody", e);
-                            }
-
-                            Toast.makeText(GastoEdit.this, mensajeError, Toast.LENGTH_LONG).show();
+                            } catch (Exception ignored) {}
+                            Toast.makeText(GastoEdit.this, errorMsg, Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<GastoDTO> call, Throwable throwable) {
-                        progressDialog.dismiss();
-                        Toast.makeText(GastoEdit.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                    public void onFailure(Call<GastoDTO> call, Throwable t) {
+                        progress.dismiss();
+                        Toast.makeText(GastoEdit.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
-
     }
 }

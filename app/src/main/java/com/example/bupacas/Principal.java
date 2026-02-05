@@ -13,12 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bupacas.Misceláneo.InicioSesionRegistro;
 import com.example.bupacas.Misceláneo.SesionManager;
-import com.example.bupacas.Misceláneo.Soporte;
 
 public class Principal extends AppCompatActivity implements View.OnClickListener {
 
     ImageView proovedores, envios, pagos, inventarios, cliente;
-    ImageView perfil, soporte;
+    ImageView perfil;
     Button logoutb, cancelar;
     FrameLayout logout;
     SesionManager sesionManager;
@@ -29,7 +28,6 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_principal);
 
         perfil=findViewById(R.id.perfil);
-        soporte=findViewById(R.id.soporte);
         proovedores=findViewById(R.id.proovedores);
         envios=findViewById(R.id.envios);
         pagos=findViewById(R.id.pagos);
@@ -44,7 +42,6 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         logoutb.setOnClickListener(this);
         envios.setOnClickListener(this);
         proovedores.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         perfil.setOnClickListener(this);
         pagos.setOnClickListener(this);
         cliente.setOnClickListener(this);
@@ -74,11 +71,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
             startActivity(intent);
         }
 
-        else if (id== soporte.getId())
-        {
-            Intent intent = new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
+
         else if(proovedores.getId() == id)
         {
             Intent intent= new Intent(this, Proveedores.class);

@@ -100,12 +100,7 @@
         <activity
             android:name=".Proveedores"
             android:exported="false" />
-        <activity
-            android:name=".Misceláneo.Soporte"
-            android:exported="false" />
-        <activity
-            android:name=".Altas.NuevoUsuario"
-            android:exported="false" />
+
         <activity
             android:name=".Edit.ProveedorEdit"
             android:exported="false" />

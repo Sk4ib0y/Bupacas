@@ -5,11 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,11 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bupacas.Adaptadores.AdaptadorProveedores;
 import com.example.bupacas.Altas.ProovedorAltas;
-import com.example.bupacas.Edit.ProveedorEdit;
 import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Endpoints.Service.ProveedorService;
-import com.example.bupacas.Misceláneo.Soporte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +32,7 @@ public class Proveedores extends AppCompatActivity implements View.OnClickListen
     private AdaptadorProveedores adaptadorProveedores;
     private ArrayList<ProveedorDTO> listaProveedores = new ArrayList<>();
 
-    private ImageView atras, casita, soporte, mas;
+    private ImageView atras, casita, mas;
 
     private ProveedorService proveedorService;
 
@@ -51,17 +45,14 @@ public class Proveedores extends AppCompatActivity implements View.OnClickListen
         recyclerProveedores = findViewById(R.id.listita); // o R.id.recyclerProveedores si cambiaste ID
         atras = findViewById(R.id.atras);
         casita = findViewById(R.id.casita);
-        soporte = findViewById(R.id.soporte);
         mas = findViewById(R.id.mas);
 
         recyclerProveedores.setLayoutManager(new LinearLayoutManager(this));
         adaptadorProveedores = new AdaptadorProveedores(this, listaProveedores);
         recyclerProveedores.setAdapter(adaptadorProveedores);
 
-        // Listeners
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         mas.setOnClickListener(this);
 
         proveedorService = RetrofitClient.getProveedorService();
@@ -104,9 +95,7 @@ public class Proveedores extends AppCompatActivity implements View.OnClickListen
         } else if (id == casita.getId()) {
             startActivity(new Intent(this, Principal.class));
             finish();
-        } else if (id == soporte.getId()) {
-            startActivity(new Intent(this, Soporte.class));
-        } else if (id == mas.getId()) {
+        }  else if (id == mas.getId()) {
             startActivity(new Intent(this, ProovedorAltas.class));
         }
     }

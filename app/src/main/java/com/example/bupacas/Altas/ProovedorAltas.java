@@ -14,13 +14,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
-import com.example.bupacas.Endpoints.DTO.UsuarioDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.InicioSesionRegistro;
-import com.example.bupacas.Misceláneo.NoDisponible;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
-import com.example.bupacas.Misceláneo.Soporte;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +25,7 @@ import retrofit2.Response;
 public class ProovedorAltas extends AppCompatActivity implements View.OnClickListener {
 
     EditText rfc, nombre, zona, empresa;
-    ImageView atras, casita, soporte;
+    ImageView atras, casita;
     Button añadir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +40,8 @@ public class ProovedorAltas extends AppCompatActivity implements View.OnClickLis
         empresa=findViewById(R.id.empresa);
         añadir=findViewById(R.id.send);
         casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
 
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         añadir.setOnClickListener(this);
         atras.setOnClickListener(this);
 
@@ -66,11 +60,7 @@ public class ProovedorAltas extends AppCompatActivity implements View.OnClickLis
             Intent intent= new Intent(this, Principal.class);
             startActivity(intent);
         }
-        else if(soporte.getId()==id)
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
+
         else if(atras.getId()==id)
         {
             finish();

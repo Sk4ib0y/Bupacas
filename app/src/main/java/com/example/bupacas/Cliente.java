@@ -9,19 +9,14 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bupacas.Adaptadores.AdaptadorCliente;
 import com.example.bupacas.Altas.ClienteAltas;
-import com.example.bupacas.Altas.ProovedorAltas;
 import com.example.bupacas.Endpoints.DTO.ClienteDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Endpoints.Service.ClienteService;
-import com.example.bupacas.Misceláneo.Soporte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +31,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
     private AdaptadorCliente adaptadorCliente;
     private ArrayList<ClienteDTO> listaClientes = new ArrayList<>();
 
-    private ImageView atras, casita, soporte, mas;
+    private ImageView atras, casita, mas;
 
     private ClienteService clienteService;
 
@@ -49,7 +44,6 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         recyclerClientes = findViewById(R.id.listita);
         atras = findViewById(R.id.atras);
         casita = findViewById(R.id.casita);
-        soporte = findViewById(R.id.soporte);
         mas = findViewById(R.id.mas);
 
         recyclerClientes.setLayoutManager(new LinearLayoutManager(this));
@@ -59,7 +53,6 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         mas.setOnClickListener(this);
 
         clienteService = RetrofitClient.getClienteService();
@@ -98,9 +91,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         } else if (id == casita.getId()) {
             startActivity(new Intent(this, Principal.class));
             finish();
-        } else if (id == soporte.getId()) {
-            startActivity(new Intent(this, Soporte.class));
-        } else if (id == mas.getId()) {
+        }else if (id == mas.getId()) {
             startActivity(new Intent(this, ClienteAltas.class));
         }
     }

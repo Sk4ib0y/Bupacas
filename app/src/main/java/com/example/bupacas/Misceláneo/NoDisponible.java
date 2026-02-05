@@ -14,7 +14,7 @@ import com.example.bupacas.R;
 
 public class NoDisponible extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, comentarios;
+    ImageView atras, casita;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +23,9 @@ public class NoDisponible extends AppCompatActivity implements View.OnClickListe
 
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
 
     }
 
@@ -44,10 +42,6 @@ public class NoDisponible extends AppCompatActivity implements View.OnClickListe
             Intent intent= new Intent(this, Principal.class);
             startActivity(intent);
         }
-        else if(comentarios.getId() == id)
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
+
     }
 }

@@ -19,11 +19,8 @@ import com.example.bupacas.Endpoints.DTO.ClienteDTO;
 import com.example.bupacas.Endpoints.DTO.PedidoDTO;
 import com.example.bupacas.Endpoints.DTO.ProveedorDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,7 +34,7 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
 
         EditText etFecha, etDestino, etCp;
         Button send;
-        ImageView atras, casita, comentarios;
+        ImageView atras, casita;
         List<ClienteDTO> clientes;
         List<ProveedorDTO> proveedores;
         Spinner spinnerCliente, spinnerProveedor;
@@ -54,7 +51,6 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
 
             atras=findViewById(R.id.atras);
             casita=findViewById(R.id.casita);
-            comentarios=findViewById(R.id.soporte);
             etDestino=findViewById(R.id.destino);
             etCp=findViewById(R.id.cp);
             etFecha = findViewById(R.id.etFecha);
@@ -62,7 +58,6 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
 
             atras.setOnClickListener(this);
             casita.setOnClickListener(this);
-            comentarios.setOnClickListener(this);
             Calendar calendar = Calendar.getInstance();
 
             send.setOnClickListener(v->
@@ -167,11 +162,7 @@ public class PedidoAltas extends AppCompatActivity implements View.OnClickListen
             startActivity(new Intent(this, Principal.class));
             finish();
         }
-        else if(id==comentarios.getId())
-        {
-            startActivity(new Intent(this, Soporte.class));
-            finish();
-        }
+
         else if(id==atras.getId())
         {
             finish();

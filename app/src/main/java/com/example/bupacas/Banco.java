@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,14 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bupacas.Adaptadores.AdaptadorBanco;
-import com.example.bupacas.Adaptadores.AdaptadorPagos;
 import com.example.bupacas.Altas.BancoAltas;
 import com.example.bupacas.Endpoints.DTO.BancoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Endpoints.Service.BancoService;
-import com.example.bupacas.Misceláneo.Actions;
-import com.example.bupacas.Misceláneo.NoDisponible;
-import com.example.bupacas.Misceláneo.Soporte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +31,7 @@ public class Banco extends AppCompatActivity implements View.OnClickListener {
     private AdaptadorBanco adaptadorBanco;
     private ArrayList<BancoDTO> listaBancos = new ArrayList<>();
 
-    private ImageView atras, casita, soporte, mas;
+    private ImageView atras, casita, mas;
 
     private BancoService bancoService;
 
@@ -50,7 +44,6 @@ public class Banco extends AppCompatActivity implements View.OnClickListener {
         recyclerBancos = findViewById(R.id.listita);
         atras = findViewById(R.id.atras);
         casita = findViewById(R.id.casita);
-        soporte = findViewById(R.id.soporte);
         mas = findViewById(R.id.mas);
 
         recyclerBancos.setLayoutManager(new LinearLayoutManager(this));
@@ -60,7 +53,6 @@ public class Banco extends AppCompatActivity implements View.OnClickListener {
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         mas.setOnClickListener(this);
 
         bancoService = RetrofitClient.getBancoService();
@@ -103,9 +95,7 @@ public class Banco extends AppCompatActivity implements View.OnClickListener {
         } else if (id == casita.getId()) {
             startActivity(new Intent(this, Principal.class));
             finish();
-        } else if (id == soporte.getId()) {
-            startActivity(new Intent(this, Soporte.class));
-        } else if (id == mas.getId()) {
+        }  else if (id == mas.getId()) {
             startActivity(new Intent(this, BancoAltas.class));
         }
     }

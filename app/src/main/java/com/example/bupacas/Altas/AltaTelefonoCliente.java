@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bupacas.Endpoints.DTO.TelefonoClienteDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -24,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AltaTelefonoCliente extends AppCompatActivity implements View.OnClickListener{
-    ImageView casita, comentarios, volver;
+    ImageView casita, volver;
     EditText telefono;
     Button send;
     private int idCliente;
@@ -36,13 +35,11 @@ public class AltaTelefonoCliente extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_alta_telefono_cliente);
 
         casita=findViewById(R.id.casita);
-        comentarios=findViewById(R.id.soporte);
         volver=findViewById(R.id.atras);
         telefono=findViewById(R.id.et_telefono);
         send=findViewById(R.id.send);
 
         send.setOnClickListener(this);
-        comentarios.setOnClickListener(this);
         casita.setOnClickListener(this);
         volver.setOnClickListener(this);
 
@@ -65,10 +62,7 @@ public class AltaTelefonoCliente extends AppCompatActivity implements View.OnCli
         {
             crearTelefono();
         }
-        if(id==comentarios.getId())
-        {
-            startActivity(new Intent(this, Soporte.class));
-        }
+
         if(id== casita.getId())
         {
             startActivity(new Intent(this, Principal.class));

@@ -3,7 +3,6 @@ package com.example.bupacas.Datos;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,10 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bupacas.Adaptadores.AdaptadorPapa;
 import com.example.bupacas.Altas.PapaAltas;
 import com.example.bupacas.Endpoints.DTO.PapaDTO;
-import com.example.bupacas.Endpoints.DTO.ProductoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Misceláneo.Actions;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -36,7 +33,7 @@ public class DatosProducto extends AppCompatActivity implements View.OnClickList
 
     Button añadir;
     TextView idTv, cantidadTv, empaqueTv, mermaTv, gananciaTv, proveedorTv;
-    ImageView atras, casita, soporte;
+    ImageView atras, casita;
     RecyclerView listita;
     private int idProducto, cantidad, proveedorId;
     private String empaqueStr,mermaStr,gananciaStr;
@@ -57,7 +54,6 @@ public class DatosProducto extends AppCompatActivity implements View.OnClickList
         gananciaTv=findViewById(R.id.tv_ganancia);
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
         proveedorTv=findViewById(R.id.tv_proveedor);
         listita=findViewById(R.id.listita);
 
@@ -100,7 +96,6 @@ public class DatosProducto extends AppCompatActivity implements View.OnClickList
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
         añadir.setOnClickListener(this);
-        soporte.setOnClickListener(this);
 
         cargarPapas();
     }
@@ -122,10 +117,7 @@ public class DatosProducto extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(this, Principal.class));
             finish();
         }
-        if(id==soporte.getId())
-        {
-            startActivity(new Intent(this, Soporte.class));
-        }
+
         if(id==añadir.getId())
         {
             Intent intent=new Intent(this, PapaAltas.class);

@@ -45,10 +45,6 @@
             android:layout_marginLeft="100dp"
             android:src="@drawable/casita"
             android:id="@+id/casita"/>
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/mensajitos"
-            android:id="@+id/soporte"/>
+
     </LinearLayout>
 </LinearLayout>

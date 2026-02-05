@@ -12,13 +12,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bupacas.Endpoints.DTO.ClienteDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -29,7 +25,7 @@ import retrofit2.Response;
 public class ClienteAltas extends AppCompatActivity implements View.OnClickListener {
 
     EditText rfc, nombre, zona, empresa;
-    ImageView atras, casita, soporte;
+    ImageView atras, casita;
     Button añadir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +40,8 @@ public class ClienteAltas extends AppCompatActivity implements View.OnClickListe
         empresa=findViewById(R.id.empresa);
         añadir=findViewById(R.id.send);
         casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
 
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         añadir.setOnClickListener(this);
         atras.setOnClickListener(this);
 
@@ -66,11 +60,7 @@ public class ClienteAltas extends AppCompatActivity implements View.OnClickListe
             Intent intent= new Intent(this, Principal.class);
             startActivity(intent);
         }
-        else if(soporte.getId()==id)
-        {
-            Intent intent= new Intent(this, Soporte.class);
-            startActivity(intent);
-        }
+
         else if(atras.getId()==id)
         {
             finish();

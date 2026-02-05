@@ -3,7 +3,6 @@ package com.example.bupacas;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,7 +17,6 @@ import com.example.bupacas.Altas.PedidoAltas;
 import com.example.bupacas.Endpoints.DTO.PedidoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
 import com.example.bupacas.Endpoints.Service.PedidoService;
-import com.example.bupacas.Misceláneo.Soporte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class Pedido extends AppCompatActivity implements View.OnClickListener {
     private AdaptadorPedidos adaptadorEnvio;
     private ArrayList<PedidoDTO> listaPedidos = new ArrayList<>();
 
-    private ImageView atras, casita, soporte, mas;
+    private ImageView atras, casita, mas;
 
     private PedidoService pedidoService;
 
@@ -46,7 +44,6 @@ public class Pedido extends AppCompatActivity implements View.OnClickListener {
         recyclerPedidos = findViewById(R.id.listita);
         atras = findViewById(R.id.atras);
         casita = findViewById(R.id.casita);
-        soporte = findViewById(R.id.soporte);
         mas = findViewById(R.id.mas);
 
         recyclerPedidos.setLayoutManager(new LinearLayoutManager(this));
@@ -56,7 +53,6 @@ public class Pedido extends AppCompatActivity implements View.OnClickListener {
 
         atras.setOnClickListener(this);
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         mas.setOnClickListener(this);
 
         pedidoService = RetrofitClient.getPedidoService();
@@ -95,9 +91,7 @@ public class Pedido extends AppCompatActivity implements View.OnClickListener {
         } else if (id == casita.getId()) {
             startActivity(new Intent(this, Principal.class));
             finish();
-        } else if (id == soporte.getId()) {
-            startActivity(new Intent(this, Soporte.class));
-        } else if (id == mas.getId()) {
+        }  else if (id == mas.getId()) {
             startActivity(new Intent(this, PedidoAltas.class));
         }
     }

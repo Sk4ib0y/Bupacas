@@ -3,7 +3,6 @@ package com.example.bupacas.Altas;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,14 +11,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bupacas.Endpoints.DTO.PapaDTO;
-import com.example.bupacas.Endpoints.DTO.ProductoDTO;
 import com.example.bupacas.Endpoints.Retrofit.RetrofitClient;
-import com.example.bupacas.Misceláneo.Soporte;
 import com.example.bupacas.Principal;
 import com.example.bupacas.R;
 
@@ -31,7 +25,7 @@ import retrofit2.Response;
 
 public class PapaAltas extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView atras, casita, soporte;
+    ImageView atras, casita;
     EditText variedad, tipo, tamaño;
     Button send;
     private int idProducto, idProveedor;
@@ -43,7 +37,6 @@ public class PapaAltas extends AppCompatActivity implements View.OnClickListener
 
         atras=findViewById(R.id.atras);
         casita=findViewById(R.id.casita);
-        soporte=findViewById(R.id.soporte);
         variedad=findViewById(R.id.et_variedad);
         tipo=findViewById(R.id.et_tipo);
         tamaño=findViewById(R.id.et_tamaño);
@@ -54,7 +47,6 @@ public class PapaAltas extends AppCompatActivity implements View.OnClickListener
         idProveedor=intent.getIntExtra("idProveedor", -1);
 
         casita.setOnClickListener(this);
-        soporte.setOnClickListener(this);
         atras.setOnClickListener(this);
         send.setOnClickListener(this);
     }
@@ -68,11 +60,7 @@ public class PapaAltas extends AppCompatActivity implements View.OnClickListener
             startActivity(new Intent(this, Principal.class));
             finish();
         }
-        else if(soporte.getId()==id)
-        {
-            startActivity(new Intent(this, Soporte.class));
-            finish();
-        }
+
         else if(atras.getId()==id)
         {
             finish();
